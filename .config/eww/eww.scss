@@ -25,6 +25,10 @@ $gray: #b3b9b8;
 	margin: 5px;
 }
 
+.active {
+		background-color: $red;
+}
+
 .workspace:hover {
 		background-color: $lighterbg;
 }
