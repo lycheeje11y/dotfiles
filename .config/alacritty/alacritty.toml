@@ -1,0 +1,16 @@
+general.import = [
+  # uncomment the flavour you want below:
+  "~/.config/alacritty/everblush.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+normal = { family = "0xProto Nerd Font", style = "Regular" }
+size = 10
+
+[window]
+padding.x = 10
+padding.y = 10
+#opacity = 0.5
