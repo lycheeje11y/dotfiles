@@ -1,0 +1,55 @@
+$bg: #141b1e;
+$fg: #dadada;
+$lighterbg: #232a2d;
+$red: #e57474;
+$green: #8ccf7e;
+$yellow: #e5c76b;
+$blue: #67b0e8;
+$magenta: #c47fd5;
+$cyan: #6cbfbf;
+$gray: #b3b9b8;
+
+* {
+  font-family: "0xProto Nerd Font Propo";
+}
+
+.bar {
+	all: unset;
+  font-family: "0xProto Nerd Font Propo";
+}
+
+.item {
+	border-radius: 12px;
+	background-color: $bg;
+	padding: 10px;
+	margin: 5px;
+}
+
+.active {
+		background-color: $red;
+}
+
+.workspace:hover {
+		background-color: $lighterbg;
+}
+
+.powermenu {
+	background-color: $green;
+	color: $bg;
+}
+
+.launcher {
+		background-color: $green;
+		color: $bg;
+}
+
+.label {
+	color: $green;
+	font-weight: bold
+}
+
+.icon {
+		color: $gray;
+}
+
+

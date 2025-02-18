@@ -1,2 +1,2 @@
-(include "./src/bar.yuck")
+(include "bars/eww.yuck")
 

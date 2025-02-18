@@ -14,7 +14,7 @@
 			 :valign "center"
 			(button :onclick "hyprctl dispatch workspace 1"  :class "label item" 1)
 			(button :onclick "hyprctl dispatch workspace 2"  :class "label item" 2)
-			(button :onclick "hyprctl dispatch workspace 3"  :class "label item {active_ws == 3 ? active : workspace}" 3)
+			(button :onclick "hyprctl dispatch workspace 3"  :class "label item" 3)
 			(button :onclick "hyprctl dispatch workspace 4"  :class "label item" 4)
 			(button :onclick "hyprctl dispatch workspace 5"  :class "label item" 5)
 			(button :onclick "hyprctl dispatch workspace 6"  :class "label item" 6)
@@ -23,7 +23,6 @@
 			(button :onclick "hyprctl dispatch workspace 9"  :class "label item" 9)
 ))
 
-(defpoll active_ws :interval "0.4s" "scripts/active-workspace")  ;; Stores active workspace
 
 (defwidget middle []
 					 (workspaces))
