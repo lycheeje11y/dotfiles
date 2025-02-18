@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Get battery info
-BATTERY="$(acpi | awk -F ' ' 'END {print $4}' | tr -d \%,)"
+BATTERY="$(acpi -b | grep -oP '\d+%' | sed 's/%//' | awk '{sum += $1; count++} END {if (count > 0) print int(sum / count + 0.5); else print "No battery detected"}')"
 CHARGE="$(acpi | awk -F ' ' 'END {print $3}' | tr -d \,)"
 
 main() {
