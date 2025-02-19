@@ -1,0 +1,3 @@
+.config/emacs/straight/
+/.config/emacs/.tmp/
+/.config/emacs/.custom.el

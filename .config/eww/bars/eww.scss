@@ -10,12 +10,15 @@ $cyan: #6cbfbf;
 $gray: #b3b9b8;
 
 * {
+  all: unset;
+  font-family: "0xProto Nerd Font Propo";
+}
+
+.vbar {
   font-family: "0xProto Nerd Font Propo";
 }
 
 .bar {
-  all: unset;
-  font-family: "0xProto Nerd Font Propo";
 }
 
 .item {
@@ -25,13 +28,14 @@ $gray: #b3b9b8;
   margin: 5px;
 }
 
-.active {
-  background-color: $magenta;
-  color: $bg;
+
+.workspace {
+	color: $green;
 }
 
-.workspace:hover {
-	color: $bg
+.workspace:hover, .active {
+	background-color: $green;
+	color: $bg;
 }
 
 .powermenu {
