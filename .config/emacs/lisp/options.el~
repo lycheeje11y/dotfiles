@@ -1,0 +1,17 @@
+(setq scroll-conservatively 1000)
+(setq epg-pinentry-mode 'loopback)
+(setq backup-directory-alist `(("." . ,(expand-file-name ".tmp/backups/" user-emacs-directory))))
+(setq backup-by-copying t)
+
+(setq delete-by-moving-to-trash t)
+
+(setq-default initial-scratch-message nil)
+
+(setopt use-short-answers t)
+
+(setq user-full-name       "Joseph Wu"
+      user-real-login-name "Joseph Wu"
+      user-login-name      "lycheejelly"
+      user-mail-address    "roccowu949@gmail.com")
+
+(provide 'options)

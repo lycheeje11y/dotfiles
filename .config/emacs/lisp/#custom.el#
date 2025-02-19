@@ -1,0 +1,24 @@
+(defun switch-to-messages-buffer ()
+  "Switch to Messages buffer."
+  (interactive)
+  (switch-to-buffer (messages-buffer)))
+
+(defun switch-to-scratch-buffer ()
+  "Switch to Messages buffer."
+  (interactive)
+  (switch-to-buffer "*scratch*"))
+
+(defun phundrak/open-marked-files (&optional files)
+  "Open all marked FILES in Dired buffer as new Emacs buffers."
+  (interactive)
+
+  (let* ((file-list (if files
+			(list files)
+		      (if (equal major-mode "dired-mode")
+			  (dired-get-marked-files)
+			(list (buffer-file-name))))))
+   (mapc (lambda (file-path)
+	   (find-file file-path))
+	 (file-list))))
+
+(provide 'custom)

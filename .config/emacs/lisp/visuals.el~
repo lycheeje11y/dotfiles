@@ -1,0 +1,7 @@
+(setq visible-bell t)
+(setq x-stretch-cursor t)
+(with-eval-after-load 'mule-util
+ (setq truncate-string-ellipsis "…"))
+(add-to-list 'default-frame-alist '(alpha-background . 75))
+
+(provide 'visuals)
