@@ -26,13 +26,12 @@ $gray: #b3b9b8;
 }
 
 .active {
-  background-color: $green;
+  background-color: $magenta;
   color: $bg;
 }
 
 .workspace:hover {
-  background-color: $lighterbg;
-  color: $green
+	color: $bg
 }
 
 .powermenu {
