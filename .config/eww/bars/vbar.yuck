@@ -8,9 +8,16 @@
 (defpoll QUOTE :interval "5m" `scripts/quotes`)
 (deflisten ACTIVE_WORKSPACE :initial "" "scripts/active-workspace")
 
+(defwidget tray []
+					 (systray
+						:orientation "v"
+						:class "item"
+						:spacing 10
+						:icon-size 24
+						:prepend-new true))
 
 (defwidget middle []
-					 "a")
+					 (tray))
 
 (defwidget menu []
 					(button :class "item launcher"
@@ -107,7 +114,7 @@
 		(bottom)
 	))
 
-(defwindow bar
+(defwindow vbar
 	:monitor 0
 	:geometry (geometry :x "0"
 							:y "0"

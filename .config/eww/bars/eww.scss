@@ -10,7 +10,6 @@ $cyan: #6cbfbf;
 $gray: #b3b9b8;
 
 * {
-  all: unset;
   font-family: "0xProto Nerd Font Propo";
 }
 
@@ -18,7 +17,8 @@ $gray: #b3b9b8;
   font-family: "0xProto Nerd Font Propo";
 }
 
-.bar {
+.vbar, .workspaces {
+	background-color: unset;
 }
 
 .item {
