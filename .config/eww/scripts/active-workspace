@@ -1,3 +1,19 @@
+
 #!/bin/bash
-hyprctl monitors | grep active | awk '{print $3}'
+
+# Initialize the first active monitor
+current_active_monitor=$(hyprctl monitors | grep active | awk '{print $3}')
+
+# Continuously check for changes in the active monitor
+while true; do
+    new_active_monitor=$(hyprctl monitors | grep active | awk '{print $3}')
+    
+    # If the active monitor has changed, output the new monitor number
+    if [[ "$new_active_monitor" != "$current_active_monitor" ]]; then
+        current_active_monitor="$new_active_monitor"
+				echo $new_active_monitor
+    fi
+    
+    sleep 0.1  # Check every 100 milliseconds
+done
 

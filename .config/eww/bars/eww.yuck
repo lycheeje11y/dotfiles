@@ -6,24 +6,40 @@
 (defpoll BLIGHT :interval "1s" `scripts/sys_info --blight`)
 (defpoll BATTERY :interval "5s" `scripts/battery --icon`)
 (defpoll QUOTE :interval "5m" `scripts/quotes`)
+(deflisten ACTIVE_WORKSPACE :initial "" "scripts/active-workspace")
 
 (defwidget workspaces []
-	(box :class "workspaces"
+  (box :class "workspaces"
        :orientation "v"
        :halign "center"
-			 :valign "center"
-			(button :onclick "hyprctl dispatch workspace 1"  :class "label item" 1)
-			(button :onclick "hyprctl dispatch workspace 2"  :class "label item" 2)
-			(button :onclick "hyprctl dispatch workspace 3"  :class "label item" 3)
-			(button :onclick "hyprctl dispatch workspace 4"  :class "label item" 4)
-			(button :onclick "hyprctl dispatch workspace 5"  :class "label item" 5)
-			(button :onclick "hyprctl dispatch workspace 6"  :class "label item" 6)
-			(button :onclick "hyprctl dispatch workspace 7"  :class "label item" 7)
-			(button :onclick "hyprctl dispatch workspace 8"  :class "label item" 8)
-			(button :onclick "hyprctl dispatch workspace 9"  :class "label item" 9)
-))
-
-
+       :valign "center"
+       (button :onclick "hyprctl dispatch workspace 1"
+               :class {ACTIVE_WORKSPACE == 1 ? "item workspace active" : "item"}
+               1)
+       (button :onclick "hyprctl dispatch workspace 2"
+               :class {ACTIVE_WORKSPACE == 2 ? "item workspace active" : "item"}
+               2)
+       (button :onclick "hyprctl dispatch workspace 3"
+               :class {ACTIVE_WORKSPACE == 3 ? "item workspace active" : "item"}
+               3)
+       (button :onclick "hyprctl dispatch workspace 4"
+               :class {ACTIVE_WORKSPACE == 4 ? "item workspaces active" : "item"}
+               4)
+       (button :onclick "hyprctl dispatch workspace 5"
+               :class {ACTIVE_WORKSPACE == 5 ? "item workspaces active" : "item"}
+               5)
+       (button :onclick "hyprctl dispatch workspace 6"
+               :class {ACTIVE_WORKSPACE == 6 ? "item workspaces active" : "item"}
+               6)
+       (button :onclick "hyprctl dispatch workspace 7"
+               :class {ACTIVE_WORKSPACE == 7 ? "item workspaces active" : "item"}
+               7)
+       (button :onclick "hyprctl dispatch workspace 8"
+               :class {ACTIVE_WORKSPACE == 8 ? "item workspaces active" : "item"}
+               8)
+       (button :onclick "hyprctl dispatch workspace 9"
+               :class {ACTIVE_WORKSPACE == 9 ? "item workspaces active" : "item"}
+               9)))
 (defwidget middle []
 					 (workspaces))
 
