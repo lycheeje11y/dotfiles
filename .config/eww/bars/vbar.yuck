@@ -8,16 +8,12 @@
 (defpoll QUOTE :interval "5m" `scripts/quotes`)
 (deflisten ACTIVE_WORKSPACE :initial "" "scripts/active-workspace")
 
-(defwidget tray []
-					 (systray
-						:orientation "v"
-						:class "item"
-						:spacing 10
-						:icon-size 24
-						:prepend-new true))
-
 (defwidget middle []
-					 (tray))
+					 (box :orientation "v"
+								:valign "center"
+								(button :onclick "scripts/media previous" :class "item media" "󰒮")
+								(button :onclick "scripts/media play-pause" :class "item media" "󰐎")
+								(button :onclick "scripts/media next" :class "item media" "󰒭" )))
 
 (defwidget menu []
 					(button :class "item launcher"
@@ -51,17 +47,29 @@
 (defpoll network_icon :interval "5s" "scripts/network --icon")
 (defpoll network_status :interval "5s" "scripts/network --stat")
 
+(defwidget systemtray []
+					 (box :orientation "v" :space-evenly "false" :valign "start"
+						(systray
+							:orientation "v"
+							:valign "start"
+							:class "item tray"
+							:spacing 5
+							:icon-size 24
+							:prepend-new true)))
+
+
 (defwidget idkwhythishelps []
 	(box :orientation "v" :valign "start" :style "margin: 0"
 		(menu)
 		(time)
 		(date)
 		(network)
-))
+		))
 
 (defwidget top []
-	(box
-	 (idkwhythishelps)))
+	(box :orientation "v"
+	 (idkwhythishelps)
+	 (systemtray)))
 
 (defwidget volume []
 		(box

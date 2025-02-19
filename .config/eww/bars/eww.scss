@@ -1,13 +1,4 @@
-$bg: #141b1e;
-$fg: #dadada;
-$lighterbg: #232a2d;
-$red: #e57474;
-$green: #8ccf7e;
-$yellow: #e5c76b;
-$blue: #67b0e8;
-$magenta: #c47fd5;
-$cyan: #6cbfbf;
-$gray: #b3b9b8;
+@import "../colors.scss"
 
 * {
   font-family: "0xProto Nerd Font Propo";
@@ -17,8 +8,9 @@ $gray: #b3b9b8;
   font-family: "0xProto Nerd Font Propo";
 }
 
-.vbar, .workspaces {
-	background-color: unset;
+.vbar,
+.workspaces {
+  background-color: unset;
 }
 
 .item {
@@ -28,14 +20,23 @@ $gray: #b3b9b8;
   margin: 5px;
 }
 
-
-.workspace {
-	color: $green;
+.middle {
+  all: unset;
 }
 
-.workspace:hover, .active {
-	background-color: $green;
-	color: $bg;
+.media {
+  color: $green;
+}
+
+.workspace {
+  color: $green;
+}
+
+.workspace:hover,
+.media:hover,
+.active {
+  background-color: $green;
+  color: $bg;
 }
 
 .powermenu {
