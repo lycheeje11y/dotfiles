@@ -1,0 +1,16 @@
+
+/**
+ *
+ * Everblush Theme for Rofi
+ * Based on the Everblush color palette
+ *
+ **/
+
+* {
+    background:     #141B1EFF;
+    background-alt: #1E272EFF;
+    foreground:     #D3B987FF;
+    selected:       #E57474FF;
+    active:         #67B0E8FF;
+    urgent:         #E57474FF;
+}
