@@ -34,9 +34,19 @@
 
 .workspace:hover,
 .media:hover,
+.opentray:hover
 .active {
   background-color: $green;
   color: $bg;
+}
+
+
+.systray {
+		padding-bottom: 20px;
+}
+
+.systray menu {
+	padding: 0 10px;
 }
 
 .powermenu {
