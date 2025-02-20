@@ -114,3 +114,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #	tmux attach -t default || tmux new -s default
 #fi
 
+autoload -U promptinit; promptinit
+prompt pure
+

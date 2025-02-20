@@ -4,5 +4,5 @@
 
 export PATH=$(go env GOPATH)/bin:$HOME/bin:$PATH
 
-PS1='%F{green}%~ %(?.%F{blue}.%F{red})  '
-RPROMPT='%{$(tput setaf 39)%}%n%{$(tput setaf 45)%}@%{$(tput setaf 51)%}%m'
+#PS1='%F{green}%~ %(?.%F{blue}.%F{red})  '
+#RPROMPT='%{$(tput setaf 39)%}%n%{$(tput setaf 45)%}@%{$(tput setaf 51)%}%m'
