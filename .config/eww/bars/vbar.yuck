@@ -97,18 +97,19 @@
 										)))
 
 (defwindow tray
-					 :monitor "0"
-					 :exclusive "false"
-					 :wm-ignore "false"
-					 :stacking "overlay"
-					 :geometry
-					 (geometry :anchor "top left" :x -54 :y 330)
-									(eventbox	:onhoverlost "eww open tray --toggle"
-															(box	:class "item"
-																		(systray  :orientation "v"
-																						:spacing 10
-																						:space-evenly "false"
-																						:icon-size 22))))
+        :monitor "0"
+        :exclusive "false"
+        :wm-ignore "false"
+        :stacking "overlay"
+        
+        :geometry
+        (geometry :anchor "top left" :x -54 :y 260)
+              (eventbox	:onhoverlost "eww open tray --toggle"
+                          (box	:class "item systemtray"
+                                (systray  :orientation "v"
+                                          :spacing 10
+                                          :space-evenly "false"
+                                          :icon-size 22))))
 
 (defwidget top []
 	(box :orientation "v"
@@ -172,7 +173,7 @@
 							:y "0"
 							:height "100%"
 							:width "10"
-							:anchor "center right")
+							:anchor "center left")
 	:stacking "fg"
 	:exclusive "true"
 	:windowtype "normal"

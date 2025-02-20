@@ -13,9 +13,20 @@
   background-color: unset;
 }
 
+.tray {
+  background: none;
+}
+
 .item {
   border-radius: 12px;
   background-color: $bg;
+  padding: 10px;
+  margin: 5px;
+}
+
+.systemtray menu {
+  border-radius: 12px;
+  background-color: $lighterbg;
   padding: 10px;
   margin: 5px;
 }
@@ -38,15 +49,6 @@
 .active {
   background-color: $green;
   color: $bg;
-}
-
-
-.systray {
-  padding-bottom: 20px;
-}
-
-.systray menu {
-  padding: 0 10px;
 }
 
 .powermenu {
