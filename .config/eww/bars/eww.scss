@@ -13,15 +13,15 @@
   background-color: unset;
 }
 
-.tray {
-  background: none;
-}
-
 .item {
   border-radius: 12px;
   background-color: $bg;
   padding: 10px;
   margin: 5px;
+}
+
+.tray_eventbox {
+  background: none;
 }
 
 .systemtray menu {
@@ -39,8 +39,20 @@
   color: $green;
 }
 
+.workspaces {
+	background: none;
+}
+
+.workspaces_widget {
+	background-color: $lighterbg;
+	border-radius: 5px;
+}
+
 .workspace {
   color: $green;
+	background: none;
+	border-radius: 5px;
+	padding: 10px;
 }
 
 .workspace:hover,

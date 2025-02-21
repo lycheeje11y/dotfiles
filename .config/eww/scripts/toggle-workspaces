@@ -1,0 +1,15 @@
+#!/bin/bash
+
+VAR_NAME="workspaces_reveal"
+
+CURRENT_VALUE=$(eww get "$VAR_NAME")
+
+if [ "$CURRENT_VALUE" = "true" ]; then
+    NEW_VALUE="false"
+else
+    NEW_VALUE="true"
+fi
+
+eww update "$VAR_NAME"="$NEW_VALUE"
+
+echo "Toggled $VAR_NAME to $NEW_VALUE"

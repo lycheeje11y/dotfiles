@@ -6,40 +6,6 @@
 (defpoll BLIGHT :interval "1s" `scripts/sys_info --blight`)
 (defpoll BATTERY :interval "5s" `scripts/battery --icon`)
 (defpoll QUOTE :interval "5m" `scripts/quotes`)
-(deflisten ACTIVE_WORKSPACE :initial "1" "scripts/active-workspace")
-
-(defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "v"
-       :halign "center"
-       :valign "center"
-       (button :onclick "hyprctl dispatch workspace 1"
-               :class {ACTIVE_WORKSPACE == 1 ? "item workspace active " : "item workspace"}
-               1)
-       (button :onclick "hyprctl dispatch workspace 2"
-               :class {ACTIVE_WORKSPACE == 2 ? "item workspace active" : "item workspace"}
-               2)
-       (button :onclick "hyprctl dispatch workspace 3"
-               :class {ACTIVE_WORKSPACE == 3 ? "item workspace active" : "item workspace"}
-               3)
-       (button :onclick "hyprctl dispatch workspace 4"
-               :class {ACTIVE_WORKSPACE == 4 ? "item workspace active" : "item workspace"}
-               4)
-       (button :onclick "hyprctl dispatch workspace 5"
-               :class {ACTIVE_WORKSPACE == 5 ? "item workspace active" : "item workspace"}
-               5)
-       (button :onclick "hyprctl dispatch workspace 6"
-               :class {ACTIVE_WORKSPACE == 6 ? "item workspace active" : "item workspace"}
-               6)
-       (button :onclick "hyprctl dispatch workspace 7"
-               :class {ACTIVE_WORKSPACE == 7 ? "item workspace active" : "item workspace"}
-               7)
-       (button :onclick "hyprctl dispatch workspace 8"
-               :class {ACTIVE_WORKSPACE == 8 ? "item workspace active" : "item workspace"}
-               8)
-       (button :onclick "hyprctl dispatch workspace 9"
-               :class {ACTIVE_WORKSPACE == 9 ? "item workspaces active" : "item workspace"}
-               9)))
 
 (defwidget middle []
   (workspaces))
@@ -77,44 +43,36 @@
 (defpoll network_icon :interval "5s" "scripts/network --icon")
 (defpoll network_status :interval "5s" "scripts/network --stat")
 
+
+;; there is a corresponding keybind in hyprland config ($modKey T)
+(defvar tray_reveal "false")
+(defwidget opentray []
+  (eventbox :onhover "eww update tray_reveal=true"
+			      :onhoverlost "eww update tray_reveal=false"
+            :class "tray_eventbox"
+            :valign "start"
+            (box :space-evenly "false" :orientation "v" :spacing "3" :class "item"
+              (label :text "" :class "label" )
+              (revealer :transition "slidedown"
+                  :reveal tray_reveal
+                  :duration "350ms"
+                  (systray  :orientation "v"
+                            :spacing 10
+                            :class "systemtray" 
+                            :space-evenly "false"
+                            :icon-size 22)))))
+
 (defwidget idkwhythishelps []
-	(box :orientation "v" :valign "start" :style "margin: 0"
+	(box :orientation "v" :valign "start" 
 		(menu)
 		(time)
 		(date)
-		(opentray)
 		))
 
-
-;; there is a corresponding keybind in hyprland config ($modKey T)
-(defwidget opentray []
-					(box
-					:class "item label opentray"
-					(eventbox :onhover "eww open tray --toggle"
-										:tooltip "System Tray"
-										:valign "fill"
-										"󰍜"
-										)))
-
-(defwindow tray
-        :monitor "0"
-        :exclusive "false"
-        :wm-ignore "false"
-        :stacking "overlay"
-        
-        :geometry
-        (geometry :anchor "top left" :x -54 :y 260)
-              (eventbox	:onhoverlost "eww open tray --toggle"
-                          (box	:class "item systemtray"
-                                (systray  :orientation "v"
-                                          :spacing 10
-                                          :space-evenly "false"
-                                          :icon-size 22))))
-
 (defwidget top []
-	(box :orientation "v"
+	(box :orientation "v" :valign "start"
 	 (idkwhythishelps)
-	 ))
+   (opentray)))
 
 (defwidget volume []
 		(box
@@ -160,10 +118,9 @@
 				(updates)))
 
 (defwidget bar []
-	(centerbox
+	(box
 		:orientation "v"
 		(top)
-		(workspaces)
 		(bottom)
 	))
 
