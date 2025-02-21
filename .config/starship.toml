@@ -1,0 +1,218 @@
+
+continuation_prompt = "[▸▹ ](dimmed #6cbfbf)"
+
+format = """
+$hostname\
+$localip\
+$shlvl\
+$shell\
+$env_var\
+$jobs\
+$sudo\
+$username\
+$character
+"""
+
+right_format = """
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$crystal\
+$custom\
+$status\
+$os\
+$battery\
+"""
+
+[fill]
+symbol = ' '
+
+[character]
+format = "$symbol "
+success_symbol = "[◎](bold #67b0e8)"
+error_symbol = "[○](bold #e57474)"
+vimcmd_symbol = "[■](bold #78dba9)"
+vimcmd_replace_one_symbol = "◌"
+vimcmd_replace_symbol = "□"
+vimcmd_visual_symbol = "▼"
+
+[sudo]
+format = "[$symbol]($style)"
+style = "bold #c47fd5"
+symbol = "⋈┈"
+disabled = false
+
+[username]
+style_user = "bold #e5c76b"
+style_root = "bold #e57474"
+format = "[⭘ $user]($style) "
+disabled = false
+show_always = false
+
+[directory]
+home_symbol = "⌂"
+truncation_length = 2
+truncation_symbol = "□ "
+read_only = " ◈"
+use_os_path_sep = true
+style = "bold #67b0e8"
+format = '[$path]($style)[$read_only]($read_only_style)'
+repo_root_style = 'bold #67b0e8'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold #67b0e8)'
+
+[cmd_duration]
+format = "[◄ $duration ](bold #e5c76b)"
+
+[localip]
+ssh_only = true
+format = " ◯[$localipv4](bold #c47fd5)"
+disabled = false
+
+[battery]
+format = "[ $percentage $symbol]($style)"
+full_symbol = "█"
+charging_symbol = "[↑](bold #78dba9)"
+discharging_symbol = "↓"
+unknown_symbol = "░"
+empty_symbol = "▃"
+
+[[battery.display]]
+threshold = 20
+style = "bold #e57474"
+
+[[battery.display]]
+threshold = 60
+style = "bold #c47fd5"
+
+[[battery.display]]
+threshold = 70
+style = "bold #e5c76b"
+
+[git_branch]
+format = " [$branch(:$remote_branch)]($style)"
+symbol = "[△](bold #67b0e8)"
+style = "bold #67b0e8"
+truncation_symbol = "⋯"
+truncation_length = 11
+ignore_branches = ["main", "master"]
+only_attached = true
+
+[git_status]
+style = "bold #67b0e8"
+format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style))"
+conflicted = "[◪◦](bold #c47fd5)"
+ahead = "[▴│[${count}](bold white)│](bold #78dba9)"
+behind = "[▿│[${count}](bold white)│](bold #e57474)"
+diverged = "[◇ ▴┤[${ahead_count}](bold white)│▿┤[${behind_count}](bold white)│](bold #c47fd5)"
+untracked = "[◌◦](bold #e5c76b)"
+stashed = "[◃◈](bold white)"
+modified = "[●◦](bold #e5c76b)"
+staged = "[▪┤[$count](bold white)│](bold #6cbfbf)"
+renamed = "[◎◦](bold #67b0e8)"
+deleted = "[✕](bold #e57474)"
+
+[rust]
+format = " [rs](bold) [$symbol$version]($style)"
+symbol = "⊃ "
+style = "bold #e57474"
+
+[golang]
+symbol = "∩ "
+format = " go [$symbol($version )]($style)"
+style = "bold #67b0e8"
+
+[java]
+symbol = "󰣇 "
+format = " java [${symbol}($version )]($style)"
+style = "bold #e5c76b"
+
+[python]
+format = " [py](bold) [${symbol}${version}]($style)"
+symbol = "[⌉](bold #67b0e8)⌊ "
+style = "bold #e5c76b"
+
+[lua]
+format = " [lua](bold) [${symbol}${version}]($style)"
+symbol = "⨀ "
+style = "bold #e5c76b"
+
+[nodejs]
+format = " [node](bold) [◫ ($version)]($style)"
+style = "bold #78dba9"
+
+[swift]
+format = " [sw](bold) [${symbol}${version}]($style)"
+symbol = "◁ "
+style = "bold #e57474"
+
+[memory_usage]
+symbol = "▪▫▪ "
+format = " mem [${ram}( ${swap})]($style)"
+style = "bold #c47fd5"
+
+[spack]
+symbol = "◇ "
+format = " spack [$symbol$environment]($style)"
+style = "bold #67b0e8"
+

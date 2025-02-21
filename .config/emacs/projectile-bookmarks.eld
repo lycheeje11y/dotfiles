@@ -1,0 +1,1 @@
+("~/.dotfiles/" "~/Code/hello/" "~/Code/fdb/")

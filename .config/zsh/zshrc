@@ -107,31 +107,9 @@ alias mpv="mpv --keep-open --no-terminal"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-
 # tmux
 # #### because i don't like tmux in emacs term, im instead starting tmux only in alacritty (see i3 config) ###
 #if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 #	tmux attach -t default || tmux new -s default
 #fi
-
-
-# Everblush Colors (ANSI Escape Codes)
-PURE_COLOR_PRIMARY=108 # Cyan
-PURE_COLOR_INFO=140    # Green
-PURE_COLOR_SUCCESS=229 # Yellow
-PURE_COLOR_WARN=229    # Orange
-PURE_COLOR_ERROR=229   # Red
-PURE_COLOR_GIT=164     # Purple
-
-# Set the colors for Pure prompt
-zstyle :prompt:pure:prompt:success color $PURE_COLOR_SUCCESS
-zstyle :prompt:pure:prompt:error color $PURE_COLOR_ERROR
-zstyle :prompt:pure:git:branch color $PURE_COLOR_GIT
-zstyle :prompt:pure:prompt:virtualenv color $PURE_COLOR_INFO
-zstyle :prompt:pure:prompt:primary color $PURE_COLOR_PRIMARY
-zstyle :prompt:pure:prompt:warn color $PURE_COLOR_WARN
-
-# Enable Pure prompt
-autoload -U promptinit; promptinit
-prompt pure
-
+eval "$(starship init zsh)"
