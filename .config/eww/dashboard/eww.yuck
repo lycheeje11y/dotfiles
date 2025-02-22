@@ -1,0 +1,58 @@
+;; VARIABLES ******************************************************************
+
+;; profile
+(defpoll name :interval "10m" "whoami")
+(defvar fullname "Joey Wu")
+
+;; media
+(defpoll TITLE :interval "1s" "scripts/media title")
+(defpoll ARTIST :interval "1s" "scripts/media artist")
+(defpoll ALBUM :interval "1s" "scripts/media album")
+(defpoll ARTWORK :interval "1s" "scripts/media artwork")
+(defpoll STATUS :interval "0.4s" "scripts/media status")
+
+
+;; WIDGETS ******************************************************************
+
+;; profile
+(defwidget profile []
+					 )
+
+;; media
+(defwidget media []
+	(box :orientation "h" :valign "fill" :hexpand "false" :vexpand "false" :space-evenly "false"
+			 ;; (box :class "album-artwork"
+			 ;;				:vexpand "false"
+			 ;;				:hexpand "false"
+			 ;;				:tooltip {ALBUM}
+			 ;;				:style "background: no-repeat center/80% url('${ARTWORK}')")
+			 ;; (image :path {ARTWORK}
+			 ;;					:class "album-artwork"
+			 ;;					:vexpand "false"
+			 ;;					:hexpand "false"
+			 ;;					:image-width 150
+			 ;;					:height 150
+			 ;;					:width 150
+			 ;;					:preserve-aspect-ratio "true")
+			(box :class "album-artwork" :vexpand "false" :hexpand "false" :style "background-image: url('${ARTWORK}');")
+				(box :orientation "v" :space-evenly "false" :valign "center" :halign "center" :class "media-right"
+						:tooltip {ALBUM}
+					(label :text {ARTIST} :class "artist" :limit-width "20" :wrap true :tooltip {ALBUM})
+					(label :text {TITLE}  :class "title" :limit-width "20" :wrap true :tooltip {ALBUM})
+					(box :class "buttons" :orientation "h" :spacing "20" :space-evenly "true"
+							 (button :class "prev media-button" :onclick "scripts/media prev" "󰒮")
+							 (button :class "play-pause media-button" :onclick "scripts/media play-pause" {STATUS == "Playing" || STATUS == "No players found"? "" : ""})
+							 (button :class "next media-button" :onclick "scripts/media next" "󰒭")))))
+
+
+;; WINDOWS ******************************************************************
+(defwindow media
+					 :monitor 0
+					 :geometry (geometry :x "600"
+															 :y "400"
+															 :width "500"
+															 :height "280"
+															 :anchor "top left")
+					 :stacking "bg"
+					 :focusable "none"
+					 (media))

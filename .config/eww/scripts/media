@@ -1,20 +1,92 @@
 #!/bin/bash
 
-case "$1" in
-		"play-pause")
-				playerctl play-pause
-				;;
-		"next")
-				playerctl next
-				;;
-		"previous")
-				playerctl previous
-				;;
-		"stop")
-				playerctl stop
-				;;
-		*)
-				echo "Usage: $0 [play-pause|next|previous|stop]"
-				exit 1
-				;;
-esac
+playerctl=/usr/bin/playerctl
+
+next () {
+	$playerctl next
+}
+
+prev () {
+	$playerctl previous
+}
+
+play-pause () {
+	$playerctl play-pause
+}
+
+title () {
+	title=$($playerctl metadata title 2>/dev/null)
+	if [ "$title" != "No players found" ]; then
+			echo "$title"
+	else
+			echo "closed"
+	fi
+}
+
+artist () {
+	artist=$($playerctl metadata artist 2>/dev/null)
+	if [ "$artist" != "No players found" ]; then
+			echo "$artist"
+	else
+			echo "we are"
+	fi
+}
+
+album () {
+	album=$($playerctl metadata album 2> /dev/null)
+	if [ "$album" != "No players found" ]; then
+			echo "$album"
+	else
+			echo "sorry"
+	fi
+}
+
+artwork () {
+	artworkUrl=$($playerctl metadata mpris:artUrl 2> /dev/null)
+	uploadPath="$HOME/.config/eww/coverArt/cover.jpg"
+
+	if [ "$artworkUrl" != "No players found" ]; then
+		rm -f "$uploadPath"
+		wget -O "$uploadPath" "$artworkUrl"
+		echo "$uploadPath"
+	else
+		echo "$HOME/.config/eww/coverArt/fallback.jpg"
+	fi
+}
+
+status () {
+	status=$($playerctl status)
+
+	echo "$status"
+}
+
+scroll-title () {
+	zscroll -l 30 \
+			--delay 0.1 \
+			--match-command "playerctl status" \
+			--match-text "Playing" "--scroll true" \
+			--match-text "Paused" "--scroll false" \
+			--update-check true "playerctl metadata --format '{{title}}'" &
+}
+
+if [ "$1" == "next" ]; then
+	next
+elif [ "$1" == "prev" ] || [ "$1" == "previous" ]; then
+	prev
+elif [ "$1" == "play-pause" ]; then
+	play-pause
+elif [ "$1" == "title" ]; then
+	title
+elif [ "$1" == "album" ]; then
+	album
+elif [ "$1" == "artist" ]; then
+	artist
+elif [ "$1" == "artwork" ]; then
+	artwork
+elif [ "$1" == "status" ]; then
+	status
+elif [ "$1" == "scroll-title" ]; then
+	scroll-title
+else
+	echo "Usage: $0 [next|prev|previous|play-pause|title|artist|album|artwork|scroll-title]"
+fi

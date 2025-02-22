@@ -1,0 +1,49 @@
+@import "../colors.scss"
+
+// media
+
+.media {
+	padding: 0;
+	border-radius: 10px;
+}
+
+.album-artwork {
+	background-size: 240px;
+	min-height: 240px;
+	min-width: 240px;
+	margin: 20px;
+	border-radius: 14px;
+}
+
+.artist {
+	color: $cyan;
+	font-size: 13px;
+}
+
+.title {
+	padding-top: 10px;
+	font-weight: bold;
+	color: $green;
+}
+
+.media-right {
+		padding-left: 20px;
+}
+
+.media-button {
+		background: none;
+		padding: 20px 0px;
+		color: $cyan;
+}
+
+.media-button:hover {
+		color: $red;
+}
+
+.prev, .next {
+		font-size: 30px;
+}
+
+.play-pause {
+		font-size: 25px;
+}
