@@ -1,8 +1,13 @@
 ;; VARIABLES ******************************************************************
 
 ;; profile
-(defpoll name :interval "10m" "whoami")
-(defvar fullname "Joey Wu")
+(defpoll NAME :interval "10m" "whoami")
+(defvar FULLNAME "Joey Wu")
+(defvar PFP "dashboard/assets/pfp.png")
+(defpoll UPTIME :interval "1s" "uptime -p")
+
+;; fortune
+(defpoll FORTUNE :interval "10s" "scripts/get-fortune")
 
 ;; media
 (defpoll TITLE :interval "1s" "scripts/media title")
@@ -13,14 +18,28 @@
 
 
 ;; WIDGETS ******************************************************************
-
 ;; profile
 (defwidget profile []
-					 )
+					 (box :orientation "v"
+								:valign "center"
+								:spacing 0 :space-evenly "false"
+								:vexpand "false" :hexpand "false"
+								:class "window"
+
+								(box :class "pfp" :vexpand "false" :hexpand "false" :style "background-image: url('${PFP}');")
+								(label :class "username ":halign "center" :wrap "true" :limit-width "25" :text "${NAME}")
+								(label :class "fullname" :halign "center" :wrap "true"
+											 :limit-width "20" :text "${FULLNAME}")
+								(label :class "uptime" :halign "center" :wrap "true" :limit-width "25"
+											 :text "${UPTIME}")
+								))
 
 ;; media
 (defwidget media []
-	(box :orientation "h" :valign "fill" :hexpand "false" :vexpand "false" :space-evenly "false"
+	(box :orientation "h" :valign "fill"
+			 :hexpand "false" :vexpand "false"
+			 :space-evenly "false" :class "window"
+			 :spacing 18
 			 ;; (box :class "album-artwork"
 			 ;;				:vexpand "false"
 			 ;;				:hexpand "false"
@@ -45,14 +64,40 @@
 							 (button :class "next media-button" :onclick "scripts/media next" "󰒭")))))
 
 
+(defwidget fortune []
+					 (label :class "window quotes" :width "500" :height "133"  :hexpand "false" :vexpand "false" :limit-width "5" :wrap "true" :text "${FORTUNE}"))
+
+
 ;; WINDOWS ******************************************************************
-(defwindow media
+(defwindow profile
 					 :monitor 0
-					 :geometry (geometry :x "600"
-															 :y "400"
-															 :width "500"
-															 :height "280"
+					 :geometry (geometry :x "5"
+															 :y "5"
+															 :width "230"
 															 :anchor "top left")
 					 :stacking "bg"
+					 :reserve (struts :distance "80px" :side "top")
+					 :focusable "none"
+					 (profile))
+
+(defwindow media
+					 :monitor 0
+					 :geometry (geometry :x "250"
+															 :y "5"
+															 :width "500"
+															 :anchor "top left")
+					 :stacking "bg"
+					 :reserve (struts :distance "80px" :side "top")
 					 :focusable "none"
 					 (media))
+
+(defwindow fortune
+					 :monitor 0
+					 :geometry (geometry :x "250"
+															 :y "250"
+															 :width "200"
+															 :anchor "top left")
+					 :stacking "bg"
+					 :reserve (struts :distance "80px" :side "top")
+					 :focusable "none"
+					 (fortune))

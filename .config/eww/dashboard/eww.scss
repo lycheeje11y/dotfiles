@@ -1,16 +1,48 @@
 @import "../colors.scss"
 
-// media
 
-.media {
-	padding: 0;
-	border-radius: 10px;
+// global *********************************************************************
+.window {
+	border-radius: 14px;
+	background-color: $bg;
 }
 
+
+// widgets *********************************************************************
+// profile
+.pfp {
+		background-size: 180px;
+		min-height: 180px;
+		min-width: 180px;
+		margin: 30px 30px 50px 30px;
+		border-radius: 100%;
+}
+
+.username {
+		font-size: 25px;
+		color: $red;
+		padding-bottom: 5px;
+}
+
+.fullname {
+		font-size: 15px;
+		color: $gray;
+		padding-bottom: 40px;
+}
+
+.uptime {
+		font-size: 12px;
+		font-style: italic;
+		color: $green;
+		padding-bottom: 10px;
+}
+
+
+// media
 .album-artwork {
-	background-size: 240px;
-	min-height: 240px;
-	min-width: 240px;
+	background-size: 200px;
+	min-height: 200px;
+	min-width: 200px;
 	margin: 20px;
 	border-radius: 14px;
 }
@@ -46,4 +78,13 @@
 
 .play-pause {
 		font-size: 25px;
+}
+
+// fortune
+.quotes {
+		color: $magenta;
+		font-size: 20px;
+		min-width: 200px;
+		min-height: 50px;
+		padding: 0px 10px;
 }

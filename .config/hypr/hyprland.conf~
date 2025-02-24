@@ -242,7 +242,6 @@ device {
 $mainMod = SUPER # Sets "Windows" key as main modifier
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-
 # CUSTOM
 
 bind = $mainMod, F, fullscreen
@@ -254,11 +253,11 @@ bind = , PRINT, exec, hyprshot -m output
 # Screenshot a region
 bind = $shiftMod, PRINT, exec, hyprshot -m region
 
-bind = $mainMod, SPACE, exec, tofi-run | zsh
+bind = $mainMod, B, exec, eww open --toggle workspaces
 
 # DEFAULT
 
-bind = $mainMod, B, exec, $browser
+#bind = $mainMod, B, exec, $browser
 bind = $mainMod, RETURN, exec, $terminal
 bind = $mainMod, C, exec, $codeEditor
 bind = $mainMod, Q, killactive,

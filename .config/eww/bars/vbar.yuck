@@ -1,20 +1,11 @@
-;; system vars
-(defpoll HOST :interval "5s" `hostname`)
-(defpoll CPU_USAGE :interval "1s" `scripts/sys_info --cpu`)
-(defpoll MEM_USAGE :interval "1s" `scripts/sys_info --mem`)
-(defpoll DISK_USAGE :interval "1s" `scripts/sys_info --disk`)
-(defpoll BLIGHT :interval "1s" `scripts/sys_info --blight`)
-(defpoll BATTERY :interval "5s" `scripts/battery --icon`)
-(defpoll QUOTE :interval "5m" `scripts/quotes`)
-
 (defwidget middle []
-  (workspaces))
+	(workspaces))
 
 (defwidget menu []
 					(button :class "item launcher"
 										:onclick "~/.config/rofi/launchers/type-3/launcher.sh"
 										:onrightclick "~/.config/rofi/powermenu/type-4/powermenu.sh"
-                    :timeout "50000ms"
+										:timeout "50000ms"
 										:tooltip "leftclick: launcher; rightclick: powermenu"
 										""))
 
@@ -47,23 +38,23 @@
 ;; there is a corresponding keybind in hyprland config ($modKey T)
 (defvar tray_reveal "false")
 (defwidget opentray []
-  (eventbox :onhover "eww update tray_reveal=true"
-			      :onhoverlost "eww update tray_reveal=false"
-            :class "tray_eventbox"
-            :valign "start"
-            (box :space-evenly "false" :orientation "v" :spacing "3" :class "item"
-              (label :text "" :class "label" )
-              (revealer :transition "slidedown"
-                  :reveal tray_reveal
-                  :duration "350ms"
-                  (systray  :orientation "v"
-                            :spacing 10
-                            :class "systemtray" 
-                            :space-evenly "false"
-                            :icon-size 22)))))
+	(eventbox :onhover "eww update tray_reveal=true"
+						:onhoverlost "eww update tray_reveal=false"
+						:class "tray_eventbox"
+						:valign "start"
+						(box :space-evenly "false" :orientation "v" :spacing "3" :class "item"
+							(label :text "" :class "label" )
+							(revealer :transition "slidedown"
+									:reveal tray_reveal
+									:duration "350ms"
+									(systray  :orientation "v"
+														:spacing 10
+														:class "systemtray"
+														:space-evenly "false"
+														:icon-size 22)))))
 
 (defwidget idkwhythishelps []
-	(box :orientation "v" :valign "start" 
+	(box :orientation "v" :valign "start"
 		(menu)
 		(time)
 		(date)
@@ -72,7 +63,7 @@
 (defwidget top []
 	(box :orientation "v" :valign "start"
 	 (idkwhythishelps)
-   (opentray)))
+	 (opentray)))
 
 (defwidget volume []
 		(box
@@ -83,7 +74,7 @@
 				(label :text "${volume.volume}%" :class "volume label"))))
 (deflisten volume :initial '{ "volume": 0, "muted": "false" }' "scripts/listen-volume.sh")
 (defpoll volume_icon :interval "1s"
-  "scripts/volume --icon")
+	"scripts/volume --icon")
 
 (defwidget battery []
 	(box :orientation "v"
@@ -93,9 +84,9 @@
 			:class "icon")
 		(label :text battery :class "battery label")))
 (defpoll battery_icon :interval "1s"
-  "scripts/battery --icon")
+	"scripts/battery --icon")
 (defpoll battery :interval "1s"
-  "scripts/battery --perc")
+	"scripts/battery --perc")
 
 (defwidget cpu []
 					 (box :orientation "v"
@@ -111,7 +102,7 @@
 (defpoll updates :interval "5m" "scripts/arch-updates.sh")
 
 (defwidget bottom []
-	  (box :class "" :orientation "v" :valign "end"
+		(box :class "" :orientation "v" :valign "end"
 				(volume)
 				(battery)
 				(cpu)
@@ -136,4 +127,3 @@
 	:windowtype "normal"
 	:focusable "none"
 	(bar))
-
