@@ -16,28 +16,30 @@ play-pause () {
 
 title () {
 	title=$($playerctl metadata title 2>/dev/null)
-	if [ "$title" != "No players found" ]; then
-			echo "$title"
-	else
+	if [ -z "${title// }" ]; then
 			echo "closed"
+	else
+			echo "$title"
 	fi
 }
 
 artist () {
 	artist=$($playerctl metadata artist 2>/dev/null)
-	if [ "$artist" != "No players found" ]; then
-			echo "$artist"
-	else
+	
+	if [ -z "${artist// }" ]; then
 			echo "we are"
+	else
+			echo "$artist"
 	fi
 }
 
 album () {
 	album=$($playerctl metadata album 2> /dev/null)
-	if [ "$album" != "No players found" ]; then
-			echo "$album"
-	else
+	
+	if [ -z "${album// }" ]; then
 			echo "sorry"
+	else
+			echo "$album"
 	fi
 }
 
@@ -45,12 +47,12 @@ artwork () {
 	artworkUrl=$($playerctl metadata mpris:artUrl 2> /dev/null)
 	uploadPath="$HOME/.config/eww/coverArt/cover.jpg"
 
-	if [ "$artworkUrl" != "No players found" ]; then
+	if [ -z "${artworkUrl// }" ]; then
+		echo "$HOME/.config/eww/coverArt/fallback.jpg"
+	else
 		rm -f "$uploadPath"
 		wget -O "$uploadPath" "$artworkUrl"
 		echo "$uploadPath"
-	else
-		echo "$HOME/.config/eww/coverArt/fallback.jpg"
 	fi
 }
 

@@ -7,9 +7,9 @@
   (box :class "workspaces_widget"
        :orientation "h"
 			 :valign "center"
-			 :spacing "10"
+			 :spacing "-1"
        (for workspace in workspaces
-         (button :onclick (format "hyprctl dispatch workspace %d" i)
+         (button :onclick "hyprctl dispatch workspace ${workspace}"
                  :class "workspace ${ACTIVE_WORKSPACE == workspace ? 'active' : ''}"
                  "${workspace}"))))
 
@@ -21,7 +21,5 @@
 							:anchor "center")
 	:stacking "fg"
 	:windowtype "normal"
- 	:focusable "none"
+ 	:focusable "false"
  	(revealer :transition "slideright" :duration "200ms"  :reveal workspaces_reveal (workspaces)))
-
-

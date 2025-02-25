@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(fortune wisdom -s -n 40)
+echo $(fortune wisdom -s -n 50)

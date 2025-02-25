@@ -3,88 +3,89 @@
 
 // global *********************************************************************
 .window {
-	border-radius: 14px;
-	background-color: $bg;
+  border-radius: 14px;
+  background-color: $bg;
 }
 
 
 // widgets *********************************************************************
 // profile
 .pfp {
-		background-size: 180px;
-		min-height: 180px;
-		min-width: 180px;
-		margin: 30px 30px 50px 30px;
-		border-radius: 100%;
+  background-size: 180px;
+  min-height: 180px;
+  min-width: 180px;
+  margin: 30px 30px 50px 30px;
+  border-radius: 100%;
 }
 
 .username {
-		font-size: 25px;
-		color: $red;
-		padding-bottom: 5px;
+  font-size: 25px;
+  color: $red;
+  padding-bottom: 5px;
 }
 
 .fullname {
-		font-size: 15px;
-		color: $gray;
-		padding-bottom: 40px;
+  font-size: 15px;
+  color: $gray;
+  padding-bottom: 40px;
 }
 
 .uptime {
-		font-size: 12px;
-		font-style: italic;
-		color: $green;
-		padding-bottom: 10px;
+  font-size: 12px;
+  font-style: italic;
+  color: $green;
+  padding-bottom: 10px;
 }
 
 
 // media
 .album-artwork {
-	background-size: 200px;
-	min-height: 200px;
-	min-width: 200px;
-	margin: 20px;
-	border-radius: 14px;
+  background-size: 200px;
+  min-height: 200px;
+  min-width: 200px;
+  margin: 20px 30px 20px 20px;
+  border-radius: 14px;
 }
 
 .artist {
-	color: $cyan;
-	font-size: 13px;
+  color: $cyan;
+  font-size: 13px;
 }
 
 .title {
-	padding-top: 10px;
-	font-weight: bold;
-	color: $green;
+  padding-top: 10px;
+  font-weight: bold;
+  color: $green;
 }
 
 .media-right {
-		padding-left: 20px;
+  padding-left: 40px;
 }
 
 .media-button {
-		background: none;
-		padding: 20px 0px;
-		color: $cyan;
+  background: none;
+  padding: 20px 0px;
+  color: $cyan;
 }
 
 .media-button:hover {
-		color: $red;
+  color: $red;
 }
 
-.prev, .next {
-		font-size: 30px;
+.prev,
+.next {
+  font-size: 30px;
 }
 
 .play-pause {
-		font-size: 25px;
+  font-size: 25px;
 }
 
 // fortune
 .quotes {
-		color: $magenta;
-		font-size: 20px;
-		min-width: 200px;
-		min-height: 50px;
-		padding: 0px 10px;
+  color: $magenta;
+  font-size: 14px;
+  min-width: 200px;
+  min-height: 50px;
+  padding: 0px 10px;
 }

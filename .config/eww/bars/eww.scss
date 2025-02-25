@@ -29,7 +29,51 @@
   background-color: $lighterbg;
   padding: 10px;
   margin: 5px;
+
+  menuitem {
+    padding: 10px 0px 10px 0px;
+    border-radius: 5px;
+    padding: 8px 12px;
+    transition: all .2s ease;
+    color: $yellow;
+  }
+
+  menuitem:hover {
+    background-color: $bg;
+  }
+
+  menuitem:disabled label {
+    color: gray;
+  }
+
+  menuitem:active {
+    background-color: red;
+    color: $bg;
+  }
+
+  menuitem arrow {
+    min-width: 16px;
+    min-height: 16px;
+
+    &:dir(ltr) {
+      -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  }
+
+  separator {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-top: 1px;
+    border-radius: 5px;
+
+    &:last-child {
+      padding: unset;
+    }
+  }
 }
+
+
 
 .middle {
   all: unset;
@@ -40,19 +84,20 @@
 }
 
 .workspaces {
-	background: none;
+  background: none;
 }
 
 .workspaces_widget {
-	background-color: $lighterbg;
-	border-radius: 5px;
+  background-color: $lighterbg;
+  border-radius: 5px;
 }
 
 .workspace {
   color: $green;
-	background: none;
-	border-radius: 5px;
-	padding: 10px;
+  background: none;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 15px;
 }
 
 .workspace:hover,
