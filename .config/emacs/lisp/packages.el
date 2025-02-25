@@ -100,7 +100,9 @@
   (evil-mode 1)
   (setq evil-want-fine-undo t) ; more granular undo with evil
   (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'emacs))
+  (evil-set-initial-state 'dashboard-mode 'emacs)
+  (evil-set-initial-state 'dired-mode 'emacs)
+  (evil-set-initial-state 'vterm-mode 'emacs))
 
 (use-package evil-nerd-commenter
   :straight (:build t)
@@ -191,10 +193,12 @@
 
 (use-package quickrun
   :straight (:build t)
+  :defer t
   :bind ("C-C r" . quickrun))
 
 (use-package crux
   :straight (:build t)
+  :defer t
   :bind
   (("C-c o"     . crux-open-with)
    ("C-c w"     . crux-cleanup-buffer-or-region)
@@ -206,7 +210,26 @@
 
 (use-package git-gutter
   :straight (:build t)
+  :defer t
   :init
   (global-git-gutter-mode +1))
+
+(use-package dimmer
+  :straight (:build t)
+  :defer t
+  :init
+  (require 'dimmer)
+  (dimmer-configure-which-key)
+  (dimmer-configure-helm)
+  (dimmer-mode t))
+
+(use-package windmove
+  :config
+  (windmove-default-keybindings 'meta)  ;; Use Ctrl as the modifier
+  (global-set-key (kbd "M-h") 'windmove-left)
+  (global-set-key (kbd "M-l") 'windmove-right)
+  (global-set-key (kbd "M-k") 'windmove-up)
+  (global-set-key (kbd "M-j") 'windmove-down))
+
 
 (provide 'packages)
