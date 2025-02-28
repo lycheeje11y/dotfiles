@@ -59,7 +59,11 @@
 }
 
 .media-right {
-  padding-left: 40px;
+  padding-left: 20px;
+}
+
+.play-pause {
+  margin: 0px 20px;
 }
 
 .media-button {
@@ -85,7 +89,7 @@
 .quotes {
   color: $magenta;
   font-size: 14px;
+  font-style: italic;
   min-width: 200px;
   min-height: 50px;
-  padding: 0px 10px;
 }

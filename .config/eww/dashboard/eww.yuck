@@ -1,4 +1,4 @@
-;; VARIABLES ******************************************************************
+; VARIABLES ******************************************************************
 
 ;; profile
 (defpoll NAME :interval "10m" "whoami")
@@ -7,7 +7,8 @@
 (defpoll UPTIME :interval "1s" "uptime -p")
 
 ;; fortune
-(defpoll FORTUNE :interval "10s" "scripts/get-fortune")
+;(defpoll FORTUNE :interval "10s" "scripts/get-fortune")
+(defvar FORTUNE "Be the PR you want to see in the world")
 
 ;; media
 (defpoll TITLE :interval "1s" "scripts/media title")
@@ -39,7 +40,7 @@
 	(box :orientation "h" :valign "fill"
 			 :hexpand "false" :vexpand "false"
 			 :space-evenly "false" :class "window"
-			 :spacing 18
+			 :spacing 15
 			 ;; (box :class "album-artwork"
 			 ;;				:vexpand "false"
 			 ;;				:hexpand "false"
@@ -54,13 +55,13 @@
 			 ;;					:width 150
 			 ;;					:preserve-aspect-ratio "true")
 			(box :class "album-artwork" :vexpand "false" :hexpand "false" :style "background-image: url('${ARTWORK}');")
-				(box :orientation "v" :space-evenly "false" :valign "center" :halign "center" :class "media-right"
+				(box :orientation "v" :space-evenly "false" :valign "center" :halign "start" :class "media-right"
 						:tooltip {ALBUM}
 					(label :text {ARTIST} :class "artist" :limit-width "20" :wrap true :tooltip {ALBUM})
-					(label :text {TITLE}  :class "title" :limit-width "20" :wrap true :tooltip {ALBUM})
-					(box :class "buttons" :orientation "h" :spacing "20" :space-evenly "true"
+					(label :text {TITLE}  :class "title" :limit-width "20" :wrap false :tooltip {ALBUM})
+					(box :class "buttons" :orientation "h" :halign "center"  :space-evenly "false"
 							 (button :class "prev media-button" :onclick "scripts/media prev" "󰒮")
-							 (button :class "play-pause media-button" :onclick "scripts/media play-pause" {STATUS == "Playing" || STATUS == "No players found"? "" : ""})
+							 (button :class "play-pause media-button" :onclick "scripts/media play-pause" {STATUS == "Playing" ? "" : ""})
 							 (button :class "next media-button" :onclick "scripts/media next" "󰒭")))))
 
 

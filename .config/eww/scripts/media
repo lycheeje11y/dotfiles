@@ -1,6 +1,6 @@
 #!/bin/bash
 
-playerctl=/usr/bin/playerctl
+playerctl="/usr/bin/playerctl --player=spotify"
 
 next () {
 	$playerctl next

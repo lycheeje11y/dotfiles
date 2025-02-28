@@ -1,5 +1,4 @@
-(defwidget middle []
-	(workspaces))
+(deflisten WORKSPACE :initial "1" "scripts/active-workspace")
 
 (defwidget menu []
 					(button :class "item launcher"
@@ -27,13 +26,15 @@
 (defpoll month	:interval "1s"	"date '+%b'")
 (defpoll day	:interval "1s"	"date '+%d'")
 
+(defwidget workspace []
+	(label :text "${WORKSPACE}" :class "label item"))
+
 (defwidget network []
 	(label :class "item label"
 				 :text network_icon
 				 :tooltip network_status))
 (defpoll network_icon :interval "5s" "scripts/network --icon")
 (defpoll network_status :interval "5s" "scripts/network --stat")
-
 
 ;; there is a corresponding keybind in hyprland config ($modKey T)
 (defvar tray_reveal "false")
@@ -58,6 +59,7 @@
 		(menu)
 		(time)
 		(date)
+    (workspace)
 		))
 
 (defwidget top []
