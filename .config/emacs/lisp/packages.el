@@ -2,8 +2,8 @@
 (load-theme 'everblush)
 
 (setq package-archives '(("melpa"  . "https://melpa.org/packages/")
-			 ("gnu"    . "https://elpa.gnu.org/packages/")
-			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+       ("gnu"    . "https://elpa.gnu.org/packages/")
+       ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (defvar bootstrap-version)
 (defvar comp-deferred-compilation-deny-list ()) ; workaround, otherwise straight shits itself
@@ -12,9 +12,9 @@
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
+  (url-retrieve-synchronously
+   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+   'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
@@ -31,41 +31,40 @@
 
 (use-package jellybeans-plus-theme
   :straight (jellybeans-plus-theme :type git
-				   :host github
-				   :repo "jsmestad/jellybeans-plus-theme"))
+           :host github
+           :repo "jsmestad/jellybeans-plus-theme"))
 
 (use-package all-the-icons
   :straight t
   :init (require 'all-the-icons))
 
 (use-package ligature
-
   :straight (ligature :type git
-		      :host github
-		      :repo "mickeynp/ligature.el"
-		      :build t)
+          :host github
+          :repo "mickeynp/ligature.el"
+          :build t)
   :config
   (ligature-set-ligatures 't
-			  '("www"))
+        '("www"))
   ;; enable traditional ligature support in eww-mode, if the
   ;; `variable-pitch' face supports it
   (ligature-set-ligatures '(eww-mode org-mode elfeed-show-mode)
-			  '("ff" "fi" "ffi"))
+        '("ff" "fi" "ffi"))
   ;; enable all cascadia code ligatures in programming modes
   (ligature-set-ligatures 'prog-mode
-			  '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-			    ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-			    "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-			    "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-			    "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-			    "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-			    "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-			    "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-			    ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-			    "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-			    "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-			    "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-			    "\\\\" "://"))
+        '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+          ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+          "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+          "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+          "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+          "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+          "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+          "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+          ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+          "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+          "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+          "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+          "\\\\" "://"))
   (global-ligature-mode t))
 
 
@@ -74,11 +73,11 @@
   :defer t
   :config
   (setopt elcord-use-major-mode-as-main-icon t
-	  elcord-refresh-rate                5
-	  elcord-boring-buffers-regexp-list  `("^ "
-					       ,(rx "*" (+ any) "*")
-					       ,(rx bol (or "Re: "
-							    "Fwd: ")))))
+    elcord-refresh-rate                5
+    elcord-boring-buffers-regexp-list  `("^ "
+                 ,(rx "*" (+ any) "*")
+                 ,(rx bol (or "Re: "
+                  "Fwd: ")))))
 
 (use-package which-key
   :straight (:build t)
@@ -92,9 +91,9 @@
   :straight (:build t)
   :init
   (setq evil-want-integration t
-	evil-want-keybinding nil
-	evil-want-C-u-scroll t
-	evil-want-C-i-jump nil)
+  evil-want-keybinding nil
+  evil-want-C-u-scroll t
+  evil-want-C-i-jump nil)
   (require 'evil-vars)
   :config
   (evil-mode 1)
@@ -128,10 +127,10 @@
 
   ;; Optionally:
   (setq nerd-icons-corfu-mapping
-	'((array :style "cod" :icon "symbol_array" :face font-lock-type-face)
-	  (boolean :style "cod" :icon "symbol_boolean" :face font-lock-builtin-face)
-	  ;; ...
-	  (t :style "cod" :icon "code" :face font-lock-warning-face)))
+  '((array :style "cod" :icon "symbol_array" :face font-lock-type-face)
+    (boolean :style "cod" :icon "symbol_boolean" :face font-lock-builtin-face)
+    ;; ...
+    (t :style "cod" :icon "code" :face font-lock-warning-face)))
   ;; Remember to add an entry for `t', the library uses that as default.
   )
 (use-package magit
@@ -142,7 +141,7 @@
   :config
   (add-hook 'magit-process-find-password-functions 'magit-process-password-auth-source)
   (setopt magit-clone-default-directory "~/fromGIT/"
-	  magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+    magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (use-package ripgrep
   :if (executable-find "rg")
@@ -182,7 +181,7 @@
   :straight (:build t)
   :config
   (setq vterm-shell "/usr/bin/zsh"
-	vterm-always-compile-module t))
+  vterm-always-compile-module t))
 
 (use-package eshell-vterm
   :after eshell
@@ -230,6 +229,5 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down))
-
 
 (provide 'packages)

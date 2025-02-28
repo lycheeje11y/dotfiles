@@ -14,6 +14,8 @@
 
 (setq delete-by-moving-to-trash t)
 
+(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+
 (setq-default initial-scratch-message nil)
 
 (setopt use-short-answers t)

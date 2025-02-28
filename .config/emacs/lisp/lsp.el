@@ -33,7 +33,7 @@
 
 (defun corfu-lsp-setup ()
   (setq-local completion-styles '(orderless)
-	      completion-category-defaults nil))
+        completion-category-defaults nil))
 
 
 (use-package lsp-mode
@@ -47,27 +47,27 @@
     read-process-output-max (* 3 1024 1024))
   (require 'lsp-java)
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	(c-ts-mode        . lsp-deferred)
-	(c++-ts-mode      . lsp-deferred)
-	(c++-mode         . lsp-deferred)
-	(sh-ts-mode       . lsp-deferred)
-	(bash-ts-mode     . lsp-deferred)
-	(go-ts-mode       . lsp-deferred)
-	(rust-ts-mode     . lsp-deferred)
-	(java-ts-mode     . lsp-deferred)
-	(java-mode        . lsp-deferred)
-	(html-ts-mode     . lsp-deferred)
-	(css-ts-mode      . lsp-deferred)
-	(json-ts-mode     . lsp-deferred)
-	(python-ts-mode   . lsp-deferred)
+  (c-ts-mode        . lsp-deferred)
+  (c++-ts-mode      . lsp-deferred)
+  (c++-mode         . lsp-deferred)
+  (sh-ts-mode       . lsp-deferred)
+  (bash-ts-mode     . lsp-deferred)
+  (go-ts-mode       . lsp-deferred)
+  (rust-ts-mode     . lsp-deferred)
+  (java-ts-mode     . lsp-deferred)
+  (java-mode        . lsp-deferred)
+  (html-ts-mode     . lsp-deferred)
+  (css-ts-mode      . lsp-deferred)
+  (json-ts-mode     . lsp-deferred)
+  (python-ts-mode   . lsp-deferred)
 
-	 ;; if you want which-key integration
-	(lsp-mode         . lsp-enable-which-key-integration)
-
-	(lsp-mode         . lsp-ui-mode)
-	(lsp-mode         . #'corfu-lsp-setup))
+   ;; if you want which-key integration
+  (lsp-mode         . lsp-enable-which-key-integration)
+  (lsp-mode         . lsp-ui-mode)
+  (lsp-mode         . #'corfu-lsp-setup))
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+  (setq lsp-enable-on-type-formatting nil)
   :commands lsp lsp-deferred)
 
 (use-package lsp-java
