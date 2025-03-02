@@ -58,6 +58,7 @@
   (java-mode        . lsp-deferred)
   (html-ts-mode     . lsp-deferred)
   (css-ts-mode      . lsp-deferred)
+  (scss-mode        . lsp-deferred)
   (json-ts-mode     . lsp-deferred)
   (python-ts-mode   . lsp-deferred)
 
