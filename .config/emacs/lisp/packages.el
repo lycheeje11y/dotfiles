@@ -75,9 +75,9 @@
   (setopt elcord-use-major-mode-as-main-icon t
     elcord-refresh-rate                5
     elcord-boring-buffers-regexp-list  `("^ "
-         ,(rx "*" (+ any) "*")
-         ,(rx bol (or "Re: "
-          "Fwd: ")))))
+	 ,(rx "*" (+ any) "*")
+	 ,(rx bol (or "Re: "
+	  "Fwd: ")))))
 
 (use-package which-key
   :straight (:build t)
@@ -223,5 +223,9 @@
   :straight (:build t)
   :init
   (eyebrowse-mode 1))
+
+(use-package ansi-color
+  :straight (:type built-in)
+  :hook (compilation-filter . ansi-color-compilation-filter))
 
 (provide 'packages)
