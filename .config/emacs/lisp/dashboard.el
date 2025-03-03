@@ -24,7 +24,6 @@
   ;; vertically center content
   ;;(setq dashboard-vertically-center-content t)
 
-  (setq dashboard-projects-backend 'projectile)
 
   (setq dashboard-items '((recents   . 5)
                           (projects  . 5)

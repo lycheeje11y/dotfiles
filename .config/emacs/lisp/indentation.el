@@ -7,6 +7,8 @@
   (local-set-key (kbd "TAB") 'tab-to-tab-stop)
   (setq tab-width custom-tab-width))
 
+(setq-default standard-indent custom-tab-width)
+
 ;; Hooks to Enable Tabs
 (add-hook 'prog-mode-hook 'enable-tabs)
 ;; Hooks to Disable Tabs

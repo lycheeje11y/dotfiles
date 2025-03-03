@@ -1,30 +1,25 @@
 (use-package corfu
+  :defer t
   :straight (:build t)
-  ;; Optional customizations
-  :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
-
-  ;; Enable Corfu only for certain modes. See also `global-corfu-modes'.
   :hook ((lsp-mode . corfu-mode)
-	 (prog-mode . corfu-mode)
-	 (shell-mode . corfu-mode)
-	 (eshell-mode . corfu-mode))
+    (prog-mode . corfu-mode)
+    (shell-mode . corfu-mode)
+    (eshell-mode . corfu-mode))
+  :bind
+  (:map corfu-map
+        ("TAB" . corfu-next)
+        ([tab] . corfu-next)
+        ("S-TAB" . corfu-previous)
+        ([backtab] . corfu-previous))
 
-  ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
-  ;; be used globally (M-/).  See also the customization variable
-  ;; `global-corfu-modes' to exclude certain modes.
+  :custom
+  (tab-always-indent 'complete)
+  (corfu-auto t)
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+
   :init
   (global-corfu-mode))
-  :config
-  ;; Enable auto completion and configure quitting
-  (setq corfu-auto t
-    corfu-quit-no-match 'separator) ;; or t
-
 
 ;; Enable vertico
 (use-package vertico
@@ -45,7 +40,7 @@
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
-	 ("M-A" . marginalia-cycle))
+     ("M-A" . marginalia-cycle))
 
   ;; The :init section is always executed.
   :init
@@ -75,7 +70,7 @@
 (use-package dabbrev
   ;; Swap M-/ and C-M-/
   :bind (("M-/" . dabbrev-completion)
-	 ("C-M-/" . dabbrev-expand))
+     ("C-M-/" . dabbrev-expand))
   :config
   (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
   ;; Since 29.1, use `dabbrev-ignored-buffer-regexps' on older.
@@ -145,22 +140,22 @@
   ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
-		  (replace-regexp-in-string
-		   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
-		   crm-separator)
-		  (car args))
-	  (cdr args)))
+          (replace-regexp-in-string
+           "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+           crm-separator)
+          (car args))
+      (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
   ;; Do not allow the cursor in the minibuffer prompt
   (setq minibuffer-prompt-properties
-	'(read-only t cursor-intangible t face minibuffer-prompt))
+    '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :bind (("C-<return>" . copilot-accept-completion)
-	  ("C-n" . 'copilot-next-completion)
-	  ("C-p" . 'copilot-previous-completion))
+      ("C-n" . 'copilot-next-completion)
+      ("C-p" . 'copilot-previous-completion))
   :config
   (add-to-list 'copilot-indentation-alist '(prog-mode 2))
   (add-to-list 'copilot-indentation-alist '(org-mode 2))

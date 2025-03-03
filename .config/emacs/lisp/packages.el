@@ -31,8 +31,8 @@
 
 (use-package jellybeans-plus-theme
   :straight (jellybeans-plus-theme :type git
-           :host github
-           :repo "jsmestad/jellybeans-plus-theme"))
+       :host github
+       :repo "jsmestad/jellybeans-plus-theme"))
 
 (use-package all-the-icons
   :straight t
@@ -40,31 +40,31 @@
 
 (use-package ligature
   :straight (ligature :type git
-          :host github
-          :repo "mickeynp/ligature.el"
-          :build t)
+      :host github
+      :repo "mickeynp/ligature.el"
+      :build t)
   :config
   (ligature-set-ligatures 't
-        '("www"))
+    '("www"))
   ;; enable traditional ligature support in eww-mode, if the
   ;; `variable-pitch' face supports it
   (ligature-set-ligatures '(eww-mode org-mode elfeed-show-mode)
-        '("ff" "fi" "ffi"))
+    '("ff" "fi" "ffi"))
   ;; enable all cascadia code ligatures in programming modes
   (ligature-set-ligatures 'prog-mode
-        '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-          ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-          "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-          "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-          "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-          "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-          "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-          "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-          ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-          "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-          "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-          "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-          "\\\\" "://"))
+    '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+      ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+      "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+      "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+      "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+      "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+      "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+      "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+      ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+      "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+      "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+      "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+      "\\\\" "://"))
   (global-ligature-mode t))
 
 
@@ -75,9 +75,9 @@
   (setopt elcord-use-major-mode-as-main-icon t
     elcord-refresh-rate                5
     elcord-boring-buffers-regexp-list  `("^ "
-                 ,(rx "*" (+ any) "*")
-                 ,(rx bol (or "Re: "
-                  "Fwd: ")))))
+         ,(rx "*" (+ any) "*")
+         ,(rx bol (or "Re: "
+          "Fwd: ")))))
 
 (use-package which-key
   :straight (:build t)
@@ -107,6 +107,7 @@
   :straight (:build t)
   :config
   (evilnc-default-hotkeys))
+
 
 (use-package key-chord
   :straight (:build t)
@@ -143,6 +144,8 @@
   (setopt magit-clone-default-directory "~/fromGIT/"
     magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(use-package evil-magit)
+
 (use-package ripgrep
   :if (executable-find "rg")
   :straight (:build t)
@@ -151,34 +154,10 @@
 (use-package ivy
   :straight (:build t))
 
-(use-package projectile
-  :straight (:build t)
-  :after ivy
-  :diminish projectile-mode
-  :custom ((projectile-completion-system 'ivy))
-  :init
-  (setq projectile-switch-project-action #'projectile-dired)
-  :config
-  (projectile-mode)
-  (setq projectile-project-search-path '("~/Code", "~/.config"))
-  (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map))
-
-(use-package shell-pop
-  :defer t
-  :straight (:build t)
-  :custom
-  (shell-pop-default-directory "$HOME")
-  (shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda () (eshell shell-pop-term-shell)))))
-  (shell-pop-window-size 30)
-  (shell-pop-full-span nil)
-  (shell-pop-window-position "bottom")
-  (shell-pop-autocd-to-working-dir t)
-  (shell-pop-restore-window-configuration t)
-  (shell-pop-cleanup-buffer-at-process-exit t))
-
 (use-package vterm
   :defer t
   :straight (:build t)
+  :bind (("C-t" . vterm))
   :config
   (setq vterm-shell "/usr/bin/zsh"
   vterm-always-compile-module t))
@@ -229,5 +208,20 @@
   (global-set-key (kbd "M-l") 'windmove-right)
   (global-set-key (kbd "M-k") 'windmove-up)
   (global-set-key (kbd "M-j") 'windmove-down))
+
+(use-package editorconfig
+  :defer t
+  :straight (:build t)
+  :init
+  (editorconfig-mode 1))
+
+(use-package minions
+  :straight (:build t)
+  :init (minions-mode 1))
+
+(use-package eyebrowse
+  :straight (:build t)
+  :init
+  (eyebrowse-mode 1))
 
 (provide 'packages)
