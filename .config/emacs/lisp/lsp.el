@@ -88,4 +88,8 @@
   :config
   (require 'dap-java))
 
+(add-hook 'java-ts-mode-hook
+          (lambda ()
+            (set (make-local-variable 'compile-command)
+                 (format "javac %s " (file-name-nondirectory buffer-file-name)))))
 (provide 'lsp)

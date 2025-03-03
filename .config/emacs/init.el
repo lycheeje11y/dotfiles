@@ -13,5 +13,6 @@
 (require 'lsp)
 (require 'treesitter)
 (require 'programming)
+(require 'project-management)
 
 (require 'indentation)
