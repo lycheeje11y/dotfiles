@@ -157,7 +157,7 @@
 (use-package vterm
   :defer t
   :straight (:build t)
-  :bind (("C-t" . vterm))
+  :bind (("C-c t" . vterm))
   :config
   (setq vterm-shell "/usr/bin/zsh"
   vterm-always-compile-module t))
