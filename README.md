@@ -8,3 +8,4 @@ Dotfiles for my arch/hyprland system
 - fastfetch: https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/6.jsonc
 - qutebrowser: https://github.com/Everblush/qutebrowser
 - hyprlock: https://github.com/MrVivekRajan/Hyprlock-Styles
+- bunch of stuff: https://github.com/LoneWolf4713/seraphic.dotfiles

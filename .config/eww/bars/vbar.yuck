@@ -124,7 +124,7 @@
 							:height "100%"
 							:width "10"
 							:anchor "center left")
-	:stacking "fg"
+  :stacking "bg"
 	:exclusive "true"
 	:windowtype "normal"
 	:focusable "none"
