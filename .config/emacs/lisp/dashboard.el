@@ -32,4 +32,4 @@
 
   ;; To disable shortcut "jump" indicators for each section, set
   ;;(setq dashboard-show-shortcuts nil)
-  (dashboard-setup-startup-hook))
+   (dashboard-setup-startup-hook))

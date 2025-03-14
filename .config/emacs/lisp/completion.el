@@ -1,4 +1,4 @@
-(use-package corfu
+ (use-package corfu
   :defer t
   :straight (:build t)
   :hook ((lsp-mode . corfu-mode)
@@ -7,10 +7,10 @@
     (eshell-mode . corfu-mode))
   :bind
   (:map corfu-map
-        ("TAB" . corfu-next)
-        ([tab] . corfu-next)
-        ("S-TAB" . corfu-previous)
-        ([backtab] . corfu-previous))
+    ("TAB" . corfu-next)
+    ([tab] . corfu-next)
+    ("S-TAB" . corfu-previous)
+    ([backtab] . corfu-previous))
 
   :custom
   (tab-always-indent 'complete)
@@ -20,6 +20,15 @@
 
   :init
   (global-corfu-mode))
+
+(use-package kind-icon
+  :straight (:build t)
+  :after corfu
+  :custom
+  (kind-icon-blend-background t)
+  (kind-icon-default-face 'corfu-default)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;; Enable vertico
 (use-package vertico
@@ -110,9 +119,6 @@
 (use-package yasnippet-snippets :straight (:build t))
 (yas-global-mode)
 
-
-
-
 ;; A few more useful configurations...
 (use-package emacs
   :custom
@@ -131,8 +137,7 @@
   (text-mode-ispell-word-completion nil)
 
   ;; Hide commands in M-x which do not apply to the current mode.  Corfu
-  ;; commands are hidden, since they are not used via M-x. This setting is
-  ;; useful beyond Corfu.
+  ;; commands are hidden, since they are not used via M-x. This setting is ;; useful beyond Corfu.
   (read-extended-command-predicate #'command-completion-default-include-p)
 
   :init
@@ -140,10 +145,10 @@
   ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
   (defun crm-indicator (args)
     (cons (format "[CRM%s] %s"
-          (replace-regexp-in-string
-           "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
-           crm-separator)
-          (car args))
+      (replace-regexp-in-string
+       "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+       crm-separator)
+      (car args))
       (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
@@ -151,15 +156,69 @@
   (setq minibuffer-prompt-properties
     '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
+
+(use-package consult
+  ;; Replace bindings. Lazily loaded by `use-package'.
+  :bind (:map global-map
+         :prefix-map custom-consult-map
+         :prefix "M-c"
+         ("s" . consult-ripgrep)
+         ("g" . consult-git-grep)
+         ("f" . consult-flycheck)
+         ("c" . consult-compile-error))
+  ;; The :init configuration is always executed (Not lazy)
+  :init
+
+  ;; Tweak the register preview for `consult-register-load',
+  ;; `consult-register-store' and the built-in commands.  This improves the
+  ;; register formatting, adds thin separator lines, register sorting and hides
+  ;; the window mode line.
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq register-preview-delay 0.5)
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
+
+  ;; Optionally configure preview. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key "M-.")
+  ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
+  ;; For some commands and buffer sources it is useful to configure the
+  ;; :preview-key on a per-command basis using the `consult-customize' macro.
+  (consult-customize
+   consult-theme :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep consult-man
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-file-register
+   consult--source-recent-file consult--source-project-recent-file
+   ;; :preview-key "M-."
+   :preview-key '(:debounce 0.4 any))
+
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; "C-+"
+
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
+)
+
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :bind (("C-<return>" . copilot-accept-completion)
       ("C-n" . 'copilot-next-completion)
       ("C-p" . 'copilot-previous-completion))
   :config
-  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-  (add-to-list 'copilot-indentation-alist '(org-mode 2))
-  (add-to-list 'copilot-indentation-alist '(text-mode 2))
-  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+  (add-to-list 'copilot-indentation-alist '(prog-mode 4))
+  (add-to-list 'copilot-indentation-alist '(org-mode 4))
+  (add-to-list 'copilot-indentation-alist '(text-mode 4))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 4))
+  (global-copilot-mode))
 
 (provide 'completion)

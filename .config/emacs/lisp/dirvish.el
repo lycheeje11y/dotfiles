@@ -1,4 +1,5 @@
 (use-package dirvish
+
   :straight (:build t)
   :defer t
   :init (dirvish-override-dired-mode)
@@ -15,9 +16,9 @@
   :config
   (dirvish-peek-mode)
   (setq dired-dwim-target         t
-	dired-recursive-copies    'always
-	dired-recursive-deletes   'top
-	delete-by-moving-to-trash t
-	dirvish-preview-dispatchers (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers)))))
+    dired-recursive-copies    'always
+    dired-recursive-deletes   'top
+    delete-by-moving-to-trash t
+    dirvish-preview-dispatchers (cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers)))))
 
 (provide 'dirvish)

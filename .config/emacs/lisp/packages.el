@@ -29,14 +29,25 @@
 (setq straight-built-in-pseudo-packages '(emacs nadvice python image-mode project flymake))
 (setq straight-use-package-by-default t)
 
-(use-package jellybeans-plus-theme
-  :straight (jellybeans-plus-theme :type git
-       :host github
-       :repo "jsmestad/jellybeans-plus-theme"))
+;; (use-package jellybeans-plus-theme
+;;   :straight (jellybeans-plus-theme :type git
+;;        :host github
+;;       :repo "jsmestad/jellybeans-plus-theme"))
 
-(use-package all-the-icons
-  :straight t
-  :init (require 'all-the-icons))
+(use-package sensible-defaults
+  :defer t
+  :straight (:build t :type git :host github :repo "hrs/sensible-defaults.el")
+  :init
+  (require 'sensible-defaults)
+  (sensible-defaults/increase-gc-threshold)
+  (sensible-defaults/delete-trailing-whitespace)
+  (sensible-defaults/make-scripts-executable)
+  (sensible-defaults/offer-to-create-parent-directories-on-save)
+  (sensible-defaults/ensure-that-files-end-with-newline)
+  (sensible-defaults/make-dired-file-sizes-human-readable)
+  (sensible-defaults/shorten-yes-or-no)
+  (sensible-defaults/always-highlight-code)
+  (sensible-defaults/refresh-buffers-when-files-change))
 
 (use-package ligature
   :straight (ligature :type git
@@ -75,9 +86,9 @@
   (setopt elcord-use-major-mode-as-main-icon t
     elcord-refresh-rate                5
     elcord-boring-buffers-regexp-list  `("^ "
-	 ,(rx "*" (+ any) "*")
-	 ,(rx bol (or "Re: "
-	  "Fwd: ")))))
+     ,(rx "*" (+ any) "*")
+     ,(rx bol (or "Re: "
+      "Fwd: ")))))
 
 (use-package which-key
   :straight (:build t)
@@ -100,8 +111,13 @@
   (setq evil-want-fine-undo t) ; more granular undo with evil
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'emacs)
-  (evil-set-initial-state 'dired-mode 'emacs)
   (evil-set-initial-state 'vterm-mode 'emacs))
+
+(use-package evil-collection
+  :defer t
+  :straight (:build t)
+  :init
+  (evil-collection-init '(dired calendar magit)))
 
 (use-package evil-nerd-commenter
   :straight (:build t)
@@ -122,18 +138,8 @@
 (use-package nerd-icons
   :straight (:build t)
   :after corfu
-  :defer t
-  :config
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+  :defer t)
 
-  ;; Optionally:
-  (setq nerd-icons-corfu-mapping
-  '((array :style "cod" :icon "symbol_array" :face font-lock-type-face)
-    (boolean :style "cod" :icon "symbol_boolean" :face font-lock-builtin-face)
-    ;; ...
-    (t :style "cod" :icon "code" :face font-lock-warning-face)))
-  ;; Remember to add an entry for `t', the library uses that as default.
-  )
 (use-package magit
   :straight (:build t)
   :defer t
@@ -143,8 +149,6 @@
   (add-hook 'magit-process-find-password-functions 'magit-process-password-auth-source)
   (setopt magit-clone-default-directory "~/fromGIT/"
     magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-
-(use-package evil-magit)
 
 (use-package ripgrep
   :if (executable-find "rg")
@@ -219,13 +223,43 @@
   :straight (:build t)
   :init (minions-mode 1))
 
-(use-package eyebrowse
-  :straight (:build t)
-  :init
-  (eyebrowse-mode 1))
-
 (use-package ansi-color
+  :defer t
   :straight (:type built-in)
   :hook (compilation-filter . ansi-color-compilation-filter))
+
+(use-package nerd-icons-dired
+  :hook (dired-mode . nerd-icons-dired-mode))
+
+(use-package dired-subtree
+  :defer t
+  :after dired
+  :straight (:build t)
+  :bind ("<tab>" . #'dired-subtree-toggle))
+
+(use-package dired-sidebar
+  :straight (:build t)
+  :custom
+  (setq dired-sidebar-theme 'nerd-icons)
+  :commands (dired-sidebar-toggle-sidebar)
+  :bind (("M-e" . dired-sidebar-toggle-sidebar)))
+
+(use-package doom-modeline
+  :defer t
+  :straight (:build t)
+  :custom
+  (setq doom-modeline-height 35)
+  (setq doom-modeline-workspace-name t)
+  :hook (after-init . doom-modeline-mode))
+
+;; (use-package all-the-icons
+;;   :straight (:build t)
+;;   :if (display-graphic-p))
+
+(use-package jinx
+  :defer t
+  :straight (:build t)
+  :hook (emacs-startup . global-jinx-mode)
+  :bind ("M-$" . jinx-correct))
 
 (provide 'packages)
