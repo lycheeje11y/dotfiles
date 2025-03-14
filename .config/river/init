@@ -1,0 +1,183 @@
+#!/bin/bash
+
+# YO THIS IS MY CONFIG YESSIR
+
+mainMod=Super
+
+terminal="alacritty -e tmux"
+browser=qutebrowser
+editor="emacsclient -c"
+menu=~/.config/rofi/launchers/type-3/launcher.sh
+
+#########################
+######-/ UTILITY \-######
+#########################
+
+run_all() {
+	local commands=("$@")
+	for cmd in "${commands[@]}"; do
+		riverctl spawn "$cmd" &
+	done
+}
+
+#########################
+#####-/ AUTOSTART \-#####
+#########################
+
+autostart=(
+	"waypaper --restore"
+	"/home/lycheejelly/.config/eww/bars/launch_bars.sh"
+	"/home/lycheejelly/.config/eww/dashboard/launch_dashboard.sh"
+	"swaync"
+	"/home/lycheejelly/.dropbox-dist/dropboxd"
+	"nm-applet"
+	"caffeine"
+	"hypridle"
+)
+
+run_all "${autostart[@]}"
+
+#########################
+######-/ MAPS \-######
+#########################
+
+map="riverctl map"
+mapNormal="$map normal"
+
+# spawn application
+$mapNormal $mainMod Return spawn "$terminal"
+$mapNormal $mainMod B spawn "$browser"
+$mapNormal $mainMod C spawn "$editor"
+$mapNormal $mainMod R spawn "$menu"
+$mapNormal $mainMod N spawn "swaync-client -t"
+
+# tag stuff
+for i in $(seq 1 9); do
+	tags=$((1 << ($i - 1)))
+
+	# Super+[1-9] to focus tag [0-8]
+	$mapNormal $mainMod $i set-focused-tags $tags
+
+	# Super+Shift+[1-9] to tag focused view with tag [0-8]
+	$mapNormal $mainMod+Shift $i set-view-tags $tags
+
+	# Super+Control+[1-9] to toggle focus of tag [0-8]
+	$mapNormal $mainMod+Control $i toggle-focused-tags $tags
+
+	# Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
+	$mapNormal $mainMod+Shift+Control $i toggle-view-tags $tags
+done
+
+# Various media key mapping examples for both normal and locked mode which do
+# not have a modifier
+for mode in normal locked
+do
+	# Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
+	$map $mode None F3 spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
+	$map $mode None F2 spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
+	$map $mode None F1 spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
+
+	# Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+	$map $mode None F10 spawn 'playerctl play-pause'
+	$map $mode None F9 spawn 'playerctl previous'
+	$map $mode None F11 spawn 'playerctl next'
+
+	# Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
+	$map $mode None F6 spawn 'brightnessctl set +5%'
+	$map $mode None F5 spawn 'brightnessctl set 5%-'
+done
+
+# view stuff
+$mapNormal $mainMod H focus-view left
+$mapNormal $mainMod J focus-view down
+$mapNormal $mainMod K focus-view up
+$mapNormal $mainMod L focus-view right
+
+$mapNormal $mainMod+Shift H swap left
+$mapNormal $mainMod+Shift J swap down
+$mapNormal $mainMod+Shift K swap up
+$mapNormal $mainMod+Shift L swap right
+
+$mapNormal $mainMod+Alt H resize horizontal -100
+$mapNormal $mainMod+Alt J resize vertical 100
+$mapNormal $mainMod+Alt K resize vertical -100
+$mapNormal $mainMod+Alt L resize horizontal 100
+
+$mapNormal $mainMod+Control H snap left
+$mapNormal $mainMod+Control J snap down
+$mapNormal $mainMod+Control K snap up
+$mapNormal $mainMod+Control L snap right
+
+$mapNormal $mainMod+Shift Return zoom
+$mapNormal $mainMod+Shift Space toggle-float
+$mapNormal $mainMod F toggle-fullscreen
+
+# layout stuff
+$mapNormal $mainMod up send-layout-cmd wideriver "--layout monocle"
+$mapNormal $mainMod down send-layout-cmd wideriver "--layout wide"
+$mapNormal $mainMod left send-layout-cmd wideriver "--layout left"
+$mapNormal $mainMod right send-layout-cmd wideriver "--layout right"
+
+$mapNormal $mainMod Space send-layout-cmd wideriver "--layout-toggle"
+
+$mapNormal $mainMod+Shift equal send-layout-cmd wideriver "--ratio +0.025"
+$mapNormal $mainMod equal send-layout-cmd wideriver "--ratio 0.5"
+$mapNormal $mainMod minus send-layout-cmd wideriver "--ratio -0.025"
+
+$mapNormal $mainMod+Alt+Shift equal send-layout-cmd wideriver "--count +1"
+$mapNormal $mainMod+Alt equal send-layout-cmd wideriver "--count 1"
+$mapNormal $mainMod+Alt minus send-layout-cmd wideriver "--count -1"
+
+$mapNormal $mainMod e send-layout-cmd wideriver "--stack even"
+$mapNormal $mainMod w send-layout-cmd wideriver "--stack dwindle"
+$mapNormal $mainMod i send-layout-cmd wideriver "--stack diminish"
+
+# other stuff
+$mapNormal $mainMod Q close
+$mapNormal $mainMod+Shift E exit
+
+#########################
+######-/ OPTIONS \-######
+#########################
+
+# borders
+riverctl border-color-focused 0xE57474
+riverctl border-color-unfocused 0x6B7278
+riverctl border-width 1
+
+# keyboard repeat rate
+riverctl set-repeat 25 300
+# cursor
+riverctl focus-follows-cursor normal
+riverctl xcursor-theme Bibata-Modern-Ice 30
+riverctl hide-cursor 10000
+
+# rules
+riverctl rule-add ssd
+riverctl rule-add -app-id "bar" csd
+
+##########################
+#######-/ LAYOUT \-#######
+##########################
+
+# wideriver: https://github.com/alex-courtis/wideriver
+riverctl default-layout wideriver
+wideriver \
+	--layout left \
+	--layout-alt monocle \
+	--stack dwindle \
+	--count-master 1 \
+	--ratio-master 0.50 \
+	--count-wide-left 0 \
+	--ratio-wide 0.35 \
+	--no-smart-gaps \
+	--inner-gaps 6 \
+	--outer-gaps 5 \
+	--border-width 4 \
+	--border-width-monocle 0 \
+	--border-width-smart-gaps 0 \
+	--border-color-focused "0xE57474" \
+	--border-color-focused-monocle "0x6B7278" \
+	--border-color-unfocused "0x6B7278" \
+	--log-threshold info \
+	>"/tmp/wideriver.${XDG_VTNR}.${USER}.log" 2>&1 &
