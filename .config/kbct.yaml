@@ -1,0 +1,4 @@
+- keyboards: ["AT Translated Set 2 keyboard", "V83P-3"]
+
+  keymap:
+    capslock: leftctrl

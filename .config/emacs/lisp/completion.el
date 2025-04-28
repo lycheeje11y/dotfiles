@@ -162,7 +162,7 @@
   :bind (:map global-map
          :prefix-map custom-consult-map
          :prefix "M-c"
-         ("s" . consult-ripgrep)
+         ("s" . consult-grep)
          ("g" . consult-git-grep)
          ("f" . consult-flycheck)
          ("c" . consult-compile-error))

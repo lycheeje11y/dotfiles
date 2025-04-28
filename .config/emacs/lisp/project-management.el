@@ -32,6 +32,23 @@
 ;;   (define-key eyebrowse-mode-map (kbd "M-w r") 'eyebrowse-rename-window-config)
 ;;   )
 
+(defun compile-interactive ()
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'project-compile))
+
+(defun recompile-interactive ()
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'project-recompile))
+
+(define-key project-prefix-map (kbd "c") 'compile-interactive)
+(define-key project-prefix-map (kbd "M-c") 'recompile-interactive)
+
+(with-eval-after-load 'project
+  (add-to-list 'project-switch-commands '(magit-project-status "Magit" "m"))
+  (add-to-list 'project-switch-commands '(project-dired "Dired" "d")))
+
 (use-package persp-mode
   :straight (:build t)
   :init

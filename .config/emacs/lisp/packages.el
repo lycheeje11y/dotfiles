@@ -1,7 +1,5 @@
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
-(load-theme 'everblush)
-
-(setq package-archives '(("melpa"  . "https://melpa.org/packages/")
+(load-theme 'everblush) (setq package-archives '(("melpa"  . "https://melpa.org/packages/")
        ("gnu"    . "https://elpa.gnu.org/packages/")
        ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
@@ -140,6 +138,13 @@
   :after corfu
   :defer t)
 
+(use-package all-the-icons
+  :defer t
+  :straight (:build t)
+  :config
+  (when (display-graphic-p)
+    (require 'all-the-icons)))
+
 (use-package magit
   :straight (:build t)
   :defer t
@@ -235,7 +240,7 @@
   :defer t
   :after dired
   :straight (:build t)
-  :bind ("<tab>" . #'dired-subtree-toggle))
+  :bind (:map dired-mode-map ("<tab>" . #'dired-subtree-toggle)))
 
 (use-package dired-sidebar
   :straight (:build t)

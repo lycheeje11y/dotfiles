@@ -25,4 +25,6 @@
       user-login-name      "lycheejelly"
       user-mail-address    "roccowu949@gmail.com")
 
+(setq exec-path '("/home/lycheejelly/go/bin" "/home/lycheejelly/bin" "/home/lycheejelly/.cargo/bin" "/usr/local/sbin" "/usr/local/bin" "/usr/bin" "/usr/lib/jvm/default/bin" "/usr/bin/site_perl" "/usr/bin/vendor_perl" "/usr/bin/core_perl" "/usr/local/libexec/emacs/30.0.93/x86_64-pc-linux-gnu"))
+
 (provide 'options)

@@ -35,13 +35,13 @@
   (setq-local completion-styles '(orderless)
         completion-category-defaults nil))
 
-
 (use-package lsp-mode
   :defer t
   :straight (:build t)
   :after lsp-java
   :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-modeline-code-action-fallback-icon "")
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l"
     lsp-completion-provider :none
     read-process-output-max (* 3 1024 1024))
@@ -61,6 +61,7 @@
   (scss-mode        . lsp-deferred)
   (json-ts-mode     . lsp-deferred)
   (python-ts-mode   . lsp-deferred)
+  (svelte-mode      . lsp-deferred)
 
    ;; if you want which-key integration
   (lsp-mode         . lsp-enable-which-key-integration)
@@ -70,6 +71,12 @@
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
   (setq lsp-enable-on-type-formatting nil)
   :commands lsp lsp-deferred)
+
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-ts-mode-hook #'lsp-go-install-save-hooks)
+
 
 (use-package lsp-java
   :straight (:build t)
@@ -92,4 +99,10 @@
           (lambda ()
             (set (make-local-variable 'compile-command)
                  (format "javac %s " (file-name-nondirectory buffer-file-name)))))
+
+;; INDENTATION
+(defun my-go-mode-hook ()
+  (add-hook 'before-save-hook 'gofmt-before-save))
+(add-hook 'go-ts-mode-hook 'my-go-mode-hook)
+
 (provide 'lsp)

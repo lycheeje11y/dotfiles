@@ -7,8 +7,8 @@
 (defpoll UPTIME :interval "1s" "uptime -p")
 
 ;; fortune
-;(defpoll FORTUNE :interval "10s" "scripts/get-fortune")
-(defvar FORTUNE "Be the PR you want to see in the world")
+(defpoll FORTUNE :interval "10s" "scripts/get-fortune")
+;(defvar FORTUNE "Be the PR you want to see in the world")
 
 ;; media
 (defpoll TITLE :interval "1s" "scripts/media title")
@@ -71,7 +71,7 @@
 
 ;; WINDOWS ******************************************************************
 (defwindow profile
-					 :monitor 0
+	         :monitor '["DP-2", "eDP-1"]'
 					 :geometry (geometry :x "5"
 															 :y "5"
 															 :width "230"
@@ -82,7 +82,7 @@
 					 (profile))
 
 (defwindow media
-					 :monitor 0
+	         :monitor '["DP-2", "eDP-1"]'
 					 :geometry (geometry :x "250"
 															 :y "5"
 															 :width "500"
@@ -93,7 +93,7 @@
 					 (media))
 
 (defwindow fortune
-					 :monitor 0
+	         :monitor '["DP-2", "eDP-1"]'
 					 :geometry (geometry :x "250"
 															 :y "250"
 															 :width "200"

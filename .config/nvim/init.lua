@@ -1,2 +1,2 @@
-require("lycheejelly.lazy")
-require("lycheejelly.config")
+require('working-config.core')
+require('working-config.lazy')

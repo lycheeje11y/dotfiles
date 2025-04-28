@@ -1,5 +1,4 @@
 (deflisten WORKSPACE :initial "1" "scripts/active-workspace")
-
 (defwidget menu []
 					(button :class "item launcher"
 										:onclick "~/.config/rofi/launchers/type-3/launcher.sh"
@@ -59,7 +58,6 @@
 		(menu)
 		(time)
 		(date)
-    (workspace)
 		))
 
 (defwidget top []
@@ -118,7 +116,7 @@
 	))
 
 (defwindow vbar
-	:monitor 0
+	:monitor '["DP-2", "eDP-1"]'
 	:geometry (geometry :x "0"
 							:y "0"
 							:height "100%"

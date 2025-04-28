@@ -1,6 +1,6 @@
 ; START TABS CONFIG [https://dougie.io/emacs/indentation/]
 ;; Create a variable for our preferred tab width
-(setq custom-tab-width 4)
+(setq custom-tab-width 2)
 ;; Two callable functions for enabling/disabling tabs in Emacs
 (defun disable-tabs () (setq indent-tabs-mode nil))
 (defun enable-tabs  ()
@@ -23,6 +23,10 @@
 (setq-default c-basic-offset custom-tab-width)
 (setq-default sh-basic-offset custom-tab-width)
 (setq-default sh-indentation custom-tab-width)
+
+(setq-default go-ts-mode-indent-offset custom-tab-width)
+(setq-default java-ts-mode-indent-offset custom-tab-width)
+(setq-default rust-ts-mode-indent-offset custom-tab-width)
 
 ;; web-mode stuff
 (setq-default web-mode-markup-indent-offset custom-tab-width)

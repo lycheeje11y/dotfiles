@@ -14,3 +14,4 @@
 (menu-bar-mode -1)                 ; disable
 
 (setenv "LSP_USE_PLISTS" "true")
+

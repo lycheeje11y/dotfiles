@@ -13,4 +13,8 @@
 ;; eww config language
 (use-package yuck-mode
   :straight (:build t))
+
+;; svelte
+(use-package svelte-mode
+  :straight (:build t))
 (provide 'programming)
