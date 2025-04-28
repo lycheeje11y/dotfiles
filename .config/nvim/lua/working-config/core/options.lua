@@ -35,4 +35,3 @@ vim.confirm = true
 
 vim.undofile = true
 vim.undolevels = 10000
-
