@@ -1,6 +1,6 @@
 Dotfiles for my arch/hyprland system
 
-# Stuff I Stole
+# Stuff I Stole (might not be accurate anymore, im not sure)
 
 - starship: https://github.com/starship/starship/discussions/1107#discussioncomment-10932940
 - wf-recorder script: https://monoald.github.io/linux/wf-recorder-hyprland/
