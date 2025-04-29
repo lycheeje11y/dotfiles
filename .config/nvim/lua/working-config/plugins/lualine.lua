@@ -4,32 +4,32 @@
 
 -- stylua: ignore
 local colors = {
-  blue   = '#89b4fa',
-  cyan   = '#94e2d5',
-  black  = '#141b1e',
-  white  = '#dadada',
-  red    = '#e57474',
-  violet = '#c47fd5',
-  grey   = '#2d3437',
+	blue   = '#89b4fa',
+	cyan   = '#94e2d5',
+	black  = '#141b1e',
+	white  = '#dadada',
+	red    = '#e57474',
+	violet = '#c47fd5',
+	grey   = '#2d3437',
 }
 
 
 local bubbles_theme = {
-  normal = {
-    a = { fg = colors.black, bg = colors.violet },
-    b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.white },
-  },
+	normal = {
+		a = { fg = colors.black, bg = colors.violet },
+		b = { fg = colors.white, bg = colors.grey },
+		c = { fg = colors.white },
+	},
 
-  insert = { a = { fg = colors.black, bg = colors.blue } },
-  visual = { a = { fg = colors.black, bg = colors.cyan } },
-  replace = { a = { fg = colors.black, bg = colors.red } },
+	insert = { a = { fg = colors.black, bg = colors.blue } },
+	visual = { a = { fg = colors.black, bg = colors.cyan } },
+	replace = { a = { fg = colors.black, bg = colors.red } },
 
-  inactive = {
-    a = { fg = colors.white, bg = colors.black },
-    b = { fg = colors.white, bg = colors.black },
-    c = { fg = colors.white },
-  },
+	inactive = {
+		a = { fg = colors.white, bg = colors.black },
+		b = { fg = colors.white, bg = colors.black },
+		c = { fg = colors.white },
+	},
 }
 
 
@@ -51,8 +51,8 @@ return {
 				lualine_x = {},
 				lualine_y = { 'filetype', 'progress' },
 				lualine_z = {
-						'location',
-					{separator = { right = '' }, left_padding = 2 }
+					'location',
+					{ separator = { right = '' }, left_padding = 2 }
 				},
 			},
 			inactive_sections = {
@@ -68,5 +68,3 @@ return {
 		}
 	end
 }
-
-
