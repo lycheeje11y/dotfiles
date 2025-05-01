@@ -3,6 +3,14 @@
 . "$HOME/.config/zsh/zshrc"
 
 export PATH=$(go env GOPATH)/bin:$HOME/bin:$PATH
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:/opt/flutter/bin
+
+export ANDROID_HOME=$HOME/Android/Sdk
+
+export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
+
 
 #PS1='%F{green}%~ %(?.%F{blue}.%F{red})  '
 #RPROMPT='%{$(tput setaf 39)%}%n%{$(tput setaf 45)%}@%{$(tput setaf 51)%}%m'
