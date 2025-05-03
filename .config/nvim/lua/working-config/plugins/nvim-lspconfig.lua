@@ -1,12 +1,7 @@
 return {
-	'neovim/nvim-lspconfig',
+	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		vim.lsp.config('*', {
-			capabilities = capabilities
-		})
-
 		local keymap = vim.keymap
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -32,32 +27,47 @@ return {
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 			end,
 		})
-
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		vim.tbl_deep_extend(
+			"force",
+			capabilities,
+			{ workspace = {
+				didChangeWatchedFiles = {
+					dynamicRegistration = true,
+				},
+			} }
+		)
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+		})
 		vim.diagnostic.config({
 			signs = {
 				text = {
-					[vim.diagnostic.severity.ERROR] = '',
-					[vim.diagnostic.severity.WARN] = '',
-					[vim.diagnostic.severity.HINT] = '󰠠',
-					[vim.diagnostic.severity.INFO] = '',
-				}
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.HINT] = "󰠠",
+					[vim.diagnostic.severity.INFO] = "",
+				},
 			},
 			virtual_text = true,
 		})
 
-
-		vim.lsp.enable('lua_ls')
-		vim.lsp.enable('rust_analyzer')
-		vim.lsp.enable('ruff')
-		vim.lsp.enable('gdscript')
-		vim.lsp.enable('zls')
-		vim.lsp.enable('eslint')
-		vim.lsp.enable('bashls')
-		vim.lsp.enable('arduino_language_server')
-		vim.lsp.enable('jdtls')
-		vim.lsp.enable('clangd')
-		vim.lsp.enable('cssls')
-		vim.lsp.enable('html')
-		vim.lsp.enable('ts_ls')
-	end
+		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("rust_analyzer")
+		vim.lsp.enable("ruff")
+		vim.lsp.enable("gdscript")
+		vim.lsp.enable("zls")
+		vim.lsp.enable("eslint")
+		vim.lsp.enable("bashls")
+		vim.lsp.enable("arduino_language_server")
+		vim.lsp.enable("jdtls")
+		vim.lsp.enable("clangd")
+		vim.lsp.enable("cssls")
+		vim.lsp.enable("html")
+		vim.lsp.enable("ts_ls")
+		vim.lsp.enable("sourcekit")
+	end,
 }
