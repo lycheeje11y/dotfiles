@@ -1,31 +1,24 @@
 return {
-	'Everblush/nvim',
-	name = 'everblush',
+	"Everblush/nvim",
+	name = "everblush",
 	config = function()
-		require('everblush').setup({
+		require("everblush").setup({
 
 			-- Default options
-			override = {},
 			transparent_background = true,
 			nvim_tree = {
 				contrast = false,
 			},
 
-			-- Configuration examples
-
 			-- Override the default highlights using Everblush or other colors
 			override = {
-				--Normal = { fg = '#ffffff', bg = 'comment' },
-			},
-
-			-- Set transparent background
-			transparent_background = true,
-
-			-- Set contrast for nvim-tree highlights
-			nvim_tree = {
-				contrast = true,
+				LineNr = { fg = "#b3b9b8" }, -- Adjust line number color
+				CursorLineNr = { fg = "#b3b9b8" }, -- Adjust line number color
+				Comment = { fg = "#dadada", italic = true }, -- Adjust comment color
+				-- Telescope-specific highlight tweaks
+				TelescopeSelection = { fg = "#f6c177", bg = "#2e3440", bold = true },
 			},
 		})
-		vim.cmd('colorscheme everblush')
-	end
+		vim.cmd("colorscheme everblush")
+	end,
 }

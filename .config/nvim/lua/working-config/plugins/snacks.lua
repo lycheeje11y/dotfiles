@@ -21,6 +21,7 @@ return {
 		debug = { enabled = true },
 		scratch = { enabled = true },
 		lazygit = { enabled = true },
+		image = { enabled = true },
 	},
 	config = function()
 		local snacks = require("snacks")
