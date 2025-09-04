@@ -62,6 +62,7 @@ return {
 		vim.lsp.enable("zls")
 		vim.lsp.enable("eslint")
 		vim.lsp.enable("bashls")
+		vim.lsp.enable("gopls")
 		vim.lsp.enable("arduino_language_server")
 		vim.lsp.enable("jdtls")
 		vim.lsp.enable("clangd")

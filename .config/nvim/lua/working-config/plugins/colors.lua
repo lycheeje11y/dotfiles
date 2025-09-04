@@ -14,7 +14,6 @@ return {
 			override = {
 				LineNr = { fg = "#b3b9b8" }, -- Adjust line number color
 				CursorLineNr = { fg = "#b3b9b8" }, -- Adjust line number color
-				Comment = { fg = "#dadada", italic = true }, -- Adjust comment color
 				-- Telescope-specific highlight tweaks
 				TelescopeSelection = { fg = "#f6c177", bg = "#2e3440", bold = true },
 			},
