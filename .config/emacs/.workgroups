@@ -1,0 +1,38 @@
+#s(wg-session "KI1FWHER1XKMA8-FJFZ2" nil nil
+	      (~pickel!~ (3 nil 2 frame-list 1 (c) 0 (c))
+			 (c 1 2 3 c 0 1 3) 0)
+	      "~/.config/emacs/.workgroups" "1.2.1"
+	      (#s(wg-workgroup "KI1FWHGXGKI2GO-FW4R8" "misc" t nil
+			       #s(wg-wconfig "KI1FWHGXRKSJS-FW58T" nil
+					     ((fullscreen)) 1000 7 111
+					     62 nil 16
+					     #s(wg-win nil nil
+						       (0 0 114 62) 1
+						       1 0 nil t nil
+						       "KI1FWHGXCWAADC-FW4N3"))
+			       nil nil nil nil)
+		 #s(wg-workgroup "KI1FWV1P23FTG0-G3CLO" "term" t nil
+				 #s(wg-wconfig "KI1FWV1Q1BGRE8-G3D6K"
+					       nil ((fullscreen)) 1000
+					       7 111 62 nil 16
+					       #s(wg-win nil nil
+							 (0 0 114 62)
+							 1 1 0 nil t
+							 nil
+							 "KI1FWHGXCWAADC-FW4N3"))
+				 nil nil nil nil)
+		 #s(wg-workgroup "KI22DWDJ25GB6W-FD0FF" "wg0" t nil
+				 #s(wg-wconfig "KI22DWDZSZ601S-FD1ST"
+					       nil ((fullscreen)) 996
+					       7 112 62 nil 16
+					       #s(wg-win nil nil
+							 (0 0 114 60)
+							 1 1 0 nil t
+							 nil
+							 "KI1FWHGXCWAADC-FW4N3"))
+				 nil nil nil nil))
+	      (#s(wg-buf "KI1FWHGXCWAADC-FW4N3" "*dashboard*" nil 1
+			 nil
+			 ((major-mode . dashboard-mode) nil nil nil
+			  nil nil nil nil)
+			 nil nil)))

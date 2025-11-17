@@ -26,12 +26,13 @@ run_all() {
 
 autostart=(
 	"waypaper --restore"
+	"/home/lycheejelly/.config/eww/bars/launch_bars.sh"
+	"/home/lycheejelly/.config/eww/dashboard/launch_dashboard.sh"
 	"swaync"
 	"/home/lycheejelly/.dropbox-dist/dropboxd"
 	"nm-applet"
 	"caffeine"
 	"hypridle"
-	"/home/lycheejelly/.config/eww/launch_all.sh"
 )
 
 run_all "${autostart[@]}"
@@ -49,9 +50,6 @@ $mapNormal $mainMod B spawn "$browser"
 $mapNormal $mainMod C spawn "$editor"
 $mapNormal $mainMod R spawn "$menu"
 $mapNormal $mainMod N spawn "swaync-client -t"
-$mapNormal $mainMod E spawn "~/.config/eww/launch_all.sh"
-
-$mapNormal $mainMod+Shift E exit
 
 # tag stuff
 for i in $(seq 1 9); do
@@ -72,31 +70,21 @@ done
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
-for mode in normal locked; do
+for mode in normal locked
+do
 	# Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
 	$map $mode None F3 spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
 	$map $mode None F2 spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
 	$map $mode None F1 spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
-
-	$map $mode None XF86AudioRaiseVolume spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
-	$map $mode None XF86AudioLowerVolume spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
-	$map $mode None XF86AudioMute spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
 
 	# Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
 	$map $mode None F10 spawn 'playerctl play-pause'
 	$map $mode None F9 spawn 'playerctl previous'
 	$map $mode None F11 spawn 'playerctl next'
 
-	$map $mode None XF86Bluetooth spawn 'playerctl play-pause'
-	$map $mode None XF86Tools spawn 'playerctl previous'
-	$map $mode None XF86Keyboard spawn 'playerctl next'
-
 	# Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
 	$map $mode None F6 spawn 'brightnessctl set +5%'
 	$map $mode None F5 spawn 'brightnessctl set 5%-'
-
-	$map $mode None XF86MonBrightnessUp spawn 'brightnessctl set +5%'
-	$map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 done
 
 # view stuff
@@ -109,7 +97,7 @@ $mapNormal $mainMod+Shift H swap left
 $mapNormal $mainMod+Shift J swap down
 $mapNormal $mainMod+Shift K swap up
 $mapNormal $mainMod+Shift L swap right
-#
+
 $mapNormal $mainMod+Alt H resize horizontal -100
 $mapNormal $mainMod+Alt J resize vertical 100
 $mapNormal $mainMod+Alt K resize vertical -100
@@ -124,13 +112,7 @@ $mapNormal $mainMod+Shift Return zoom
 $mapNormal $mainMod+Shift Space toggle-float
 $mapNormal $mainMod F toggle-fullscreen
 
-# output stuff
-# $mapNormal $mainMod+Alt H send-to-output left
-# $mapNormal $mainMod+Alt J send-to-output down
-# $mapNormal $mainMod+Alt K send-to-output up
-# $mapNormal $mainMod+Alt L send-to-output left
-#
-# # # layout stuff
+# layout stuff
 $mapNormal $mainMod up send-layout-cmd wideriver "--layout monocle"
 $mapNormal $mainMod down send-layout-cmd wideriver "--layout wide"
 $mapNormal $mainMod left send-layout-cmd wideriver "--layout left"
@@ -191,7 +173,7 @@ wideriver \
 	--no-smart-gaps \
 	--inner-gaps 6 \
 	--outer-gaps 5 \
-	--border-width 3 \
+	--border-width 4 \
 	--border-width-monocle 0 \
 	--border-width-smart-gaps 0 \
 	--border-color-focused "0xE57474" \

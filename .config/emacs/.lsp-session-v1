@@ -1,0 +1,1 @@
+#s(lsp-session ("/home/lycheejelly/Code/monkey" "/home/lycheejelly/.config" "/home/lycheejelly/Code" "/home/lycheejelly/Code/btree" "/home/lycheejelly/.dotfiles") nil #s(hash-table test equal data (jdtls ("/home/lycheejelly/Code/btree"))) #s(hash-table test equal) #s(hash-table test equal))

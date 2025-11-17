@@ -1,0 +1,139 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Fri Mar  7 11:49:59 2025
+;; Desktop file format version 208
+;; Emacs version 30.0.93
+
+;; Global section:
+(setq desktop-saved-frameset nil)
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/.config/emacs/lisp/project-management.el" "~/.dotfiles/.config/emacs/lisp/project-management.el" "~/.dotfiles/.config/emacs/init.el" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/project-management.el" 0 68 (project "/home/lycheejelly/.dotfiles/")) #("/home/lycheejelly/.dotfiles/.config/emacs/init.el" 0 49 (project "/home/lycheejelly/.dotfiles/")) "~/.config/emacs/lisp/dashboard.el" "~/.dotfiles/.config/emacs/init.el" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/project-management.el" 0 68 (project "~/.dotfiles/")) #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/dashboard.el" 0 59 (project "~/.dotfiles/")) "~/desktop.png" "~/.config/emacs/lisp/dashboard.el" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/dashboard.el" 0 59 (project "~/.dotfiles/")) "~/.dotfiles/.config/emacs/init.el" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/packages.el" 0 58 (project "/home/lycheejelly/.dotfiles/")) "~/.config/emacs/lisp/project-management.el" "~/.config/emacs/" "~/.dotfiles/" "~/.config/emacs/lisp/dirvish.el" "~/.dotfiles/" "~/.config/emacs/" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/packages.el" 0 58 (project "~/.dotfiles/")) "~/.config/emacs/lisp/dirvish.el" #("/home/lycheejelly/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" 0 103 (project "~/Code/btree/")) "~/.dotfiles/.config/emacs/lisp/packages.el" "~/.config/emacs/lisp/options.el" #("/home/lycheejelly/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" 0 103 (project "~/Code/btree/")) #("/home/lycheejelly/.dotfiles/.config/emacs/init.el" 0 49 (project "~/.dotfiles/")) #("/home/lycheejelly/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" 0 103 (project "~/Code/btree/")) "~/.dotfiles/.config/emacs/init.el" "~/.dotfiles/.config/emacs/lisp/modeline.el" "~/.config/emacs/lisp/packages.el" #("/home/lycheejelly/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" 0 103 (project "~/Code/btree/")) "~/.config/emacs/lisp/packages.el" #("/home/lycheejelly/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" 0 103 (project "~/Code/btree/")) "~/Code/btree/" #("/home/lycheejelly/.dotfiles/.config/emacs/lisp/packages.el" 0 58 (project "~/.dotfiles/")) "~/.dotfiles/" "~/.config/emacs/lisp/packages.el" "~/Code/Java/Main.java" "~/.dotfiles/.config/emacs/lisp/dashboard.el" "~/.dotfiles/.config/emacs/lisp/packages.el" "~/.dotfiles/.config/emacs/themes/everblush-theme.el" "~/.config/emacs/lisp/lsp.el" "~/.dotfiles/" "~/Code/btree/USACO_Bronze_Theory/2D_Array/ProblemSolving/MostAppearingCoordinate_1.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/NoCorners.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/SwapLargestAndSmallestSubarray.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/SmallestSubarrayIndex.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/LargestSubarrayIndex.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/LargestSubarray.java" "~/Code/btree/" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/LargestSubarray.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/SwapMaxMin.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Traversal/SwapMaxMin.java" "~/Code/btree/" "~/BRWI Dropbox/Joey Wu/Stuff -- Joey/Obsidian/Coding Notes/Passwords.md" "~/.dotfiles/.config/hypr/hypridle.conf" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Creation/test.java" "~/.config/eww/eww.scss" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Creation/test.java" "~/.config/emacs/lisp/indentation.el" "~/hello.py" "~/hello/py" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_5.java" "~/.dotfiles/.config/emacs/lisp/packages.el" "~/.config/emacs/lisp/indentation.el" "~/.dotfiles/.config/emacs/lisp/indentation.el" "~/.config/emacs/lisp/indentation.el" "~/hello.py" "~/.config/emacs/lisp/lsp.el" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/" "~/.config/emacs/lisp/lsp.el" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_5.java" "~/.config/emacs/lisp/lsp.el" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_5.java" "~/.config/emacs/lisp/lsp.el" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_5.java" "~/Code/btree/" "~/Code/hello.py" "~/.dotfiles/.config/emacs/lisp/lsp.el" "~/.config/emacs/lisp/packages.el" "~/Code/hello.py" "~/Code/btree/" "~/.dotfiles/.config/emacs/" "~/.dotfiles/.config/eww/dashboard/eww.scss" "~/.config/eww/dashboard/eww.yuck" "/etc/pacman.conf" "~/bin/wf-recorder.sh" "~/.config/eww/dashboard/eww.yuck" "~/daemon" "~/.dotfiles/wallpapers/chill.png" "~/.dotfiles/" "~/.dotfiles/.config/eww/colors.scss" "~/.dotfiles/.config/eww/dashboard/eww.scss" "~/.config/eww/dashboard/eww.yuck" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_5.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_4.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_3.java" "~/Code/btree/USACO_Bronze_Theory/2D_Array/Inputs/2DInput_2.java"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/home/lycheejelly/.dotfiles/.config/emacs/lisp/project-management.el"
+  "project-management.el"
+  'emacs-lisp-mode
+  '(evil-collection-unimpaired-mode corfu-mode yas-minor-mode font-lock-mode eldoc-mode ligature-mode evil-local-mode git-gutter-mode auto-revert-mode hs-minor-mode display-line-numbers-mode)
+  223
+  '(266 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 19890 171322 976000) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
+  '((mark-ring (479 459 606 529 565 203 102 49 49 49 49 49 135 135 135))))
+
+(desktop-create-buffer 208
+  nil
+  "*dashboard*"
+  'dashboard-mode
+  '(font-lock-mode ligature-mode evil-local-mode evil-collection-unimpaired-mode corfu-mode yas-minor-mode)
+  1
+  '(1 nil)
+  t
+  nil
+  '((buffer-display-time 26571 17540 496105 475000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/lycheejelly/.dotfiles/.config/emacs/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(evil-collection-unimpaired-mode corfu-mode yas-minor-mode font-lock-mode eldoc-mode ligature-mode evil-local-mode git-gutter-mode auto-revert-mode hs-minor-mode display-line-numbers-mode)
+  310
+  '(310 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 17393 399216 158000) (buffer-file-coding-system . undecided-unix) (overwrite-mode))
+  '((mark-ring (310 240))))
+
+(desktop-create-buffer 208
+  "/home/lycheejelly/.dotfiles/.config/emacs/lisp/dashboard.el"
+  "dashboard.el"
+  'emacs-lisp-mode
+  '(evil-collection-unimpaired-mode corfu-mode yas-minor-mode font-lock-mode eldoc-mode ligature-mode evil-local-mode git-gutter-mode auto-revert-mode hs-minor-mode display-line-numbers-mode)
+  1410
+  '(188 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 16711 192441 742000) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/lycheejelly/.dotfiles/.config/emacs/lisp/packages.el"
+  "packages.el"
+  'emacs-lisp-mode
+  '(evil-collection-unimpaired-mode corfu-mode yas-minor-mode display-line-numbers-mode hs-minor-mode auto-revert-mode git-gutter-mode evil-local-mode ligature-mode eldoc-mode font-lock-mode)
+  6545
+  '(6565 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 15670 705543 239000) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
+  '((mark-ring (6565 6565 6565 6565 6565 6565))))
+
+(desktop-create-buffer 208
+  "/home/lycheejelly/.dotfiles/.config/emacs/lisp/dirvish.el"
+  "dirvish.el"
+  'emacs-lisp-mode
+  '(evil-collection-unimpaired-mode corfu-mode yas-minor-mode display-line-numbers-mode hs-minor-mode auto-revert-mode git-gutter-mode evil-local-mode ligature-mode eldoc-mode font-lock-mode)
+  1
+  '(1 nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 17017 866186 443000) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
+  '((mark-ring (21))))
+
+(desktop-create-buffer 208
+  "/home/lycheejelly/desktop.png"
+  "desktop.png"
+  'fundamental-mode
+  '(yas-minor-mode corfu-mode evil-collection-unimpaired-mode evil-local-mode ligature-mode font-lock-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 26571 17169 124301 15000) (buffer-file-coding-system . no-conversion) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "*scratch*"
+  'lisp-interaction-mode
+  '(font-lock-mode eldoc-mode ligature-mode evil-local-mode evil-collection-unimpaired-mode yas-minor-mode hs-minor-mode display-line-numbers-mode corfu-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (indent-tabs-mode) (buffer-display-time 26571 17520 529365 220000) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "*straight-process*"
+  'special-mode
+  '(yas-minor-mode corfu-mode evil-collection-unimpaired-mode evil-local-mode ligature-mode font-lock-mode)
+  13069
+  '(nil nil)
+  t
+  nil
+  '((buffer-display-time) (overwrite-mode))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "*Messages*"
+  'messages-buffer-mode
+  '(yas-minor-mode corfu-mode evil-collection-unimpaired-mode evil-local-mode ligature-mode font-lock-mode)
+  2606
+  '(nil nil)
+  t
+  nil
+  '((buffer-display-time) (overwrite-mode))
+  '((mark-ring nil)))
+

@@ -1,5 +1,0 @@
-((magit-commit nil)
- (magit-gitignore nil)
- (magit-push nil)
- (magit-status-jump nil)
- (magit-submodule nil))
