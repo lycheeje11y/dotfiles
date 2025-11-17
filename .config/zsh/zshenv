@@ -1,6 +1,7 @@
 . "$HOME/.cargo/env"
 
 source "$HOME/.config/zsh/zshrc"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # export PATH=$(go env GOPATH)/bin:$HOME/bin:$PATH
 # export PATH=$PATH:$ANDROID_HOME/platform-tools

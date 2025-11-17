@@ -1,0 +1,47 @@
+#+TITLE: FILE NAVIGATION
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: things like dired, project.el, etc.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** DIRED
+#+begin_src emacs-lisp
+  (use-package dired
+    :hook (dired-mode . dired-hide-details-mode)
+    :config
+    (setq dired-mouse-drag-files t)
+    ;; just group directories first
+    (when (eq system-type 'darwin)
+      (let ((gls (executable-find "gls")))
+	(when gls
+	(setq dired-use-ls-dired t
+	      insert-directory-program gls
+	      dired-listing-switches "-aBhl  --group-directories-first")))))
+
+
+  (use-package dired-subtree
+    :defer t
+    :bind (:map dired-mode-map ("<tab>" . #'dired-subtree-toggle)))
+
+  (use-package dired-sidebar
+    :ensure t
+    :defer t
+    :bind (:map jelly/leader-map ("f o" . dired-sidebar-toggle-sidebar))
+    :commands (dired-sidebar-toggle-sidebar)
+    :init
+    (add-hook 'dired-sidebar-mode-hook
+	    (lambda ()
+	      (unless (file-remote-p default-directory)
+		(auto-revert-mode))))
+    :config
+    ;; be able to use this leader map in dired (mostly for dired-sidebar)
+    (with-eval-after-load 'dired-sidebar
+      (define-key dired-sidebar-mode-map (kbd "SPC") jelly/leader-map))
+
+    (setq dired-sidebar-theme 'icons
+	dired-sidebar-width 40
+	dired-sidebar-should-follow-file t
+	dired-sidebar-display-alist
+	'((side . right)   ;; place on the right
+	  (slot . 0))))     ;; above other side windows (like ibuffer)))
+#+end_src

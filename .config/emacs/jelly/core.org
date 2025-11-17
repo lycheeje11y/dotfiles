@@ -1,0 +1,141 @@
+#+TITLE: CORE CONFIG
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: These are my reworked Emacs dots.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** PACKAGE.EL
+#+begin_src emacs-lisp
+    (require 'package)
+
+    ;; Add repositories
+    (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+
+    ;; force manual package initialization just in case
+  (setq warning-suppress-log-types '((package reinitialization)))
+    (package-initialize)
+#+end_src
+
+
+** WHICH-KEY
+#+begin_src emacs-lisp
+  ;; enable which-key for easier discovery
+  (use-package which-key :config (which-key-mode 1))
+#+end_src
+
+** SENSIBLE DEFAULTS
+#+begin_src emacs-lisp
+  ;; there's a weird warning I don't want to see
+  (setq byte-compile-warnings '(not free-vars unresolved noruntime cl-functions obsolete))
+
+  (use-package sensible-defaults :vc (:url "https://github.com/hrs/sensible-defaults.el" :rev :newest :branch "main")
+    :ensure t
+    :config
+    (require 'sensible-defaults)
+(sensible-defaults/open-files-from-home-directory)
+  (sensible-defaults/increase-gc-threshold)
+  (sensible-defaults/delete-trailing-whitespace)
+  (sensible-defaults/treat-camelcase-as-separate-words)
+  (sensible-defaults/automatically-follow-symlinks)
+  (sensible-defaults/make-scripts-executable)
+  (sensible-defaults/single-space-after-periods)
+  (sensible-defaults/offer-to-create-parent-directories-on-save)
+  (sensible-defaults/apply-changes-to-highlighted-region)
+  (sensible-defaults/overwrite-selected-text)
+  (sensible-defaults/ensure-that-files-end-with-newline)
+  (sensible-defaults/quiet-startup)
+  (sensible-defaults/make-dired-file-sizes-human-readable)
+  (sensible-defaults/shorten-yes-or-no)
+  (sensible-defaults/always-highlight-code)
+  (sensible-defaults/refresh-buffers-when-files-change)
+  (sensible-defaults/show-matching-parens)
+  (sensible-defaults/flash-screen-instead-of-ringing-bell)
+  (sensible-defaults/set-default-line-length-to 80)
+  (sensible-defaults/open-clicked-files-in-same-frame-on-mac)
+  (sensible-defaults/yank-to-point-on-mouse-click)
+  )
+
+  ;; SENSIBLE DEFAULTS KEYBINDINGS ARE USED IN BINDS.ORG
+#+end_src
+
+** EVIL MODE
+This is absolutely necessary (for me).
+
+*** Base Evil Setup
+#+begin_src emacs-lisp
+  (use-package evil
+    :ensure t
+    :defer t
+    :init
+    ;; set up Evil behavior
+    (setq evil-want-key nil)
+    (setq evil-want-keybinding nil)
+    (setq evil-vsplit-window-right t)
+    (setq evil-vsplit-window-left t)
+    :config
+    (evil-mode 1))
+
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init '(corfu compile dired magit)
+    ))
+#+end_src
+
+** SOME MORE OPTIONS
+Electric pair mode auto add delimiters like if I type "(" it'll automatically complete it to "()." Lol you probably knew that.
+#+begin_src emacs-lisp
+  (electric-pair-mode 1)
+#+end_src
+
+Example: ask "y or n" instead of "yes or no".
+#+begin_src emacs-lisp
+  (setopt use-short-answers t)
+#+end_src
+
+
+This is my contact information
+#+begin_src emacs-lisp
+(setq user-full-name       "Joseph Wu"
+      user-real-login-name "Joseph Wu"
+      user-login-name      "lycheejelly"
+      user-mail-address    "jrw.isfound@gmail.com")
+#+end_src
+
+I'm fine having line numbers everywhere.
+#+begin_src emacs-lisp
+  ;; add line numbers
+  (global-display-line-numbers-mode)
+ #+end_src
+
+Set up $PATH
+#+begin_src emacs-lisp
+      (use-package exec-path-from-shell
+        :ensure t
+        :init
+        (when (memq window-system '(mac ns x))
+      (exec-path-from-shell-initialize))
+      )
+
+#+end_src
+
+Backup to a hidden directory {EMASCS_DIR}/.tmp/backups
+#+begin_src emacs-lisp
+  (setq backup-directory-alist `(("." . ,(expand-file-name ".tmp/backups/" user-emacs-directory))))
+  (setq backup-by-copying t)
+ #+end_src
+
+If I make any changes through settings menu, put in this file (.custom.el)
+ #+begin_src emacs-lisp
+(setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
+(when (file-exists-p custom-file) ; Don’t forget to load it, we still need it
+  (load custom-file))
+ #+end_src
+
+ Self-explanatory
+ #+begin_src emacs-lisp
+ (setq delete-by-moving-to-trash t)
+ #+end_src

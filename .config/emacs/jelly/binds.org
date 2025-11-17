@@ -1,0 +1,71 @@
+#+TITLE: KEYBINDS
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: holds all my keybindings
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** EVIL
+First, let's set up "jk" to enter normal mode for evil;
+#+begin_src emacs-lisp
+  ;; yay now i can use jk to re-enter normal mode
+  (use-package evil-escape
+    :ensure t
+    :init
+    (setq-default evil-escape-key-sequence "jk")
+    :config
+    (evil-escape-mode 1))
+#+end_src
+Yay! Now a leader key...I'll use bind-key for this.
+#+begin_src emacs-lisp
+  (use-package bind-key :ensure t)
+
+  ;; Create a prefix keymap for the leader
+  (defvar jelly/leader-map (make-sparse-keymap)
+    "Keymap for my leader key shortcuts.")
+
+  ;; Bind SPC as the leader in normal and visual states
+  (define-key evil-normal-state-map (kbd "SPC") jelly/leader-map)
+  (define-key evil-visual-state-map (kbd "SPC") jelly/leader-map)
+
+  (which-key-add-key-based-replacements
+    "SPC" "leader")
+
+  (bind-key "f f" 'find-file jelly/leader-map)     ;; SPC f f -> find-file
+  (bind-key "b b" 'switch-to-buffer jelly/leader-map) ;; SPC b b -> switch buffer
+  (bind-key "b d" 'kill-buffer jelly/leader-map)   ;; SPC b d -> kill buffer
+  (bind-key "s h" 'split-window-below jelly/leader-map) ;; SPC w s -> split below
+  (bind-key "s v" 'split-window-right jelly/leader-map) ;; SPC w v -> split right
+
+  (bind-key "l" 'zone jelly/leader-map) ;; SPC w v -> split right
+
+  ;; SENSIBLE DEFAULTS KEYBINDINGS
+  (bind-key "g c" 'sensible-defaults/comment-or-uncomment-region-or-line jelly/leader-map)
+
+  ;; be able to use this leader map in dired (mostly for dired-sidebar)
+  (with-eval-after-load 'dired-sidebar
+    (define-key dired-sidebar-mode-map (kbd "SPC") jelly/leader-map))
+
+  ;; Optional: group names for which-key (nice for seeing menus)
+  (which-key-add-key-based-replacements
+    "SPC b" "buffers"
+    "SPC w" "windows")
+#+end_src
+
+** CRUX
+
+#+begin_src emacs-lisp
+  (use-package crux
+    :ensure t
+    :defer t
+    :hook (before-save-hook . crux-cleanup-buffer-or-region)
+    :bind
+    (:map jelly/leader-map
+	  ("c l" . crux-eval-and-replace)
+	  ("w s" . crux-transpose-windows)
+	  ("k" . crux-kill-other-buffers)
+	  ("c c" . crux-cleanup-buffer-or-region))
+    ("C-g" . crux-keyboard-quit-dwim)
+    ("M-o". crux-smart-open-line-above)
+    )
+
+#+end_src

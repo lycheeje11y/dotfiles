@@ -1,0 +1,63 @@
+#+TITLE: CODE STUFF
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: coding stuff
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** TREESITTER
+
+** LSP
+WE USING EGLOT
+#+begin_src emacs-lisp
+(use-package eglot
+  :bind
+  (:map jelly/leader-map
+	;; All LSP commands under leader + g
+	("g d" . eglot-find-definition)
+	("g r" . eglot-find-references)
+	("r n" . eglot-rename)
+	("g h" . eldoc)
+	("g f" . eglot-format-buffer)
+	("g a" . eglot-code-actions)
+	("g e" . eglot-show-workspace-folders)
+	("g i" . eglot-find-implementation)
+	("g t" . eglot-find-typeDefinition)
+	("g s" . eglot-signal-deferred))
+
+  :config
+  ;; Optional: enable Eglot automatically for some modes
+  (add-hook 'python-ts-mode-hook 'eglot-ensure)
+  (add-hook 'c-ts-mode-hook 'eglot-ensure)
+  (add-hook 'c++-ts-mode-hook 'eglot-ensure))
+#+end_src
+
+** FLYMAKE
+#+begin_src emacs-lisp
+	     (use-package flycheck
+	       :ensure t
+	       :defer t
+	       :bind (:map jelly/leader-map
+			("x x" . flycheck-list-errors)
+			("x X" . flymake-show-project-diagnostics)
+			("x n" . flycheck-next-error)
+			("x p" . flycheck-previous-error))
+	       :init (global-flycheck-mode)
+	  :config
+	  (custom-set-faces
+    '(error ((t (:foreground "#FB4933"))))
+    '(warning ((t (:foreground "#77FEE9"))))))
+
+	   (use-package flycheck-eglot
+     :ensure t
+     :after (flycheck eglot)
+     :config
+     (global-flycheck-eglot-mode 1))
+  #+end_src
+
+Function to compile interactively
+#+begin_src emacs-lisp
+(defun compile-interactive ()
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'project-compile))
+#+end_src

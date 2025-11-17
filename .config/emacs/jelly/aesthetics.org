@@ -1,0 +1,91 @@
+#+TITLE: AESTHETICS :)
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: These are my reworked Emacs dots. #+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+*** Theme
+#+begin_src emacs-lisp
+    (use-package creamsody-theme
+      :vc (:url "https://github.com/emacsfodder/emacs-theme-creamsody"
+		:branch "main"
+		:rev :newest)
+      :ensure t
+      :config
+
+    (load-theme 'creamsody t))
+#+end_src
+
+*** UI Tweaks
+#+begin_src emacs-lisp
+  ;; disable the toolbar
+  (tool-bar-mode -1)
+
+  ;; disable scrollbars
+  (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
+#+end_src
+
+*** Window + Display Tweaks
+#+begin_src emacs-lisp
+;; more minimal titlebar
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+  ;; add more padding
+  (add-to-list 'default-frame-alist '(internal-border-width . 12))
+#+end_src
+
+
+*** Just add some icons rq
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t
+    :defer t
+    :if (display-graphic-p)
+    )
+
+  ;; so that it shows in the minibuffer
+  (use-package all-the-icons-completion
+    :ensure t
+    :defer t
+    :after (marginalia all-the-icons)
+    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+    :init
+    (all-the-icons-completion-mode))
+
+  (use-package all-the-icons-dired
+    :ensure t
+    :defer t
+    :config
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+    #+end_src
+
+
+*** ZONES!
+#+begin_src emacs-lisp
+  (require 'zone)
+  (setq zone-idle-time 300)
+  (zone-when-idle zone-idle-time)     ;; enable idle zoning
+#+end_src
+
+*** MODELINE
+I don't really want to to dig into customization here, so I just use a package. Also, this really shouldn't be going in the aesthetics file, but it's fine
+#+begin_src emacs-lisp
+  (use-package punch-line
+    :ensure t
+    :defer t
+    :hook ((after-init . punch-line-mode)        ;; Load punch-line
+		   (after-init . punch-weather-update)   ;; Load weather
+		   (after-init . punch-load-tasks))      ;; Load saved current tasks
+    :config
+    ;; Divider style
+    (setq
+     punch-line-left-separator "  "
+     punch-line-right-separator "  "
+     punch-line-vc-use-github-icon nil
+     punch-show-weather-info nil
+     punch-line-modal-size 'medium
+     punch-line-music-info '(:service spotify)      ;; Music service configuration
+     punch-line-music-max-length 80   ;; Max length of artist and song
+     punch-line-modal-divider-style 'block)  ; Options: 'arrow, 'flame, 'ice, 'circle, 'block
+    )
+#+end_src
