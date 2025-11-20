@@ -5,12 +5,12 @@
 
 *** Theme
 #+begin_src emacs-lisp
-    (use-package creamsody-theme
-      :vc (:url "https://github.com/emacsfodder/emacs-theme-creamsody"
-		:branch "main"
-		:rev :newest)
-      :ensure t
-      :config
+  (use-package creamsody-theme
+    :vc (:url "https://github.com/emacsfodder/emacs-theme-creamsody"
+	      :branch "main"
+	      :rev :newest)
+    :ensure t
+    :config
 
     (load-theme 'creamsody t))
 #+end_src
@@ -26,9 +26,9 @@
 
 *** Window + Display Tweaks
 #+begin_src emacs-lisp
-;; more minimal titlebar
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
+  ;; more minimal titlebar (it only applies on macos)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
   ;; add more padding
   (add-to-list 'default-frame-alist '(internal-border-width . 12))
 #+end_src
@@ -57,7 +57,7 @@
     :config
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
-    #+end_src
+#+end_src
 
 
 *** ZONES!
@@ -72,6 +72,7 @@ I don't really want to to dig into customization here, so I just use a package. 
 #+begin_src emacs-lisp
   (use-package punch-line
     :ensure t
+    :vc (:url "https://github.com/konrad1977/punch-line" :branch main :rev :newest)
     :defer t
     :hook ((after-init . punch-line-mode)        ;; Load punch-line
 		   (after-init . punch-weather-update)   ;; Load weather

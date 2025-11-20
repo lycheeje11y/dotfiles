@@ -50,7 +50,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
-			{ "folke/neodev.nvim", opts = {} },
+			{ "folke/neodev.nvim",                   opts = {} },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -278,8 +278,8 @@ return {
 		cmd = "Trouble",
 		keys = {
 			{ "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
-			{ "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
-			{ "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
+			{ "<leader>xl", "<cmd>Trouble loclist toggle<CR>",  desc = "Open trouble location list" },
+			{ "<leader>xt", "<cmd>Trouble todo toggle<CR>",     desc = "Open todos in trouble" },
 			{
 				"<leader>xx",
 				"<cmd>Trouble diagnostics toggle<cr>",
